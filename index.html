@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repertórios e Quadros</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f3ff;
+      color: #242038;
+    }
+
+    header {
+      background: #6c4cff;
+      color: white;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    header button {
+      background: white;
+      color: #6c4cff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .principal {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .apresentacao {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .apresentacao h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .apresentacao p {
+      font-size: 18px;
+      color: #625d73;
+    }
+
+    .quadros {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #6c4cff;
+    }
+
+    .card p {
+      color: #625d73;
+      line-height: 1.5;
+    }
+
+    .acao {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .acao button {
+      background: #6c4cff;
+      color: white;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>📚 Repertórios e Quadros</h1>
+    <button>Entrar</button>
+  </header>
+
+  <main class="principal">
+
+    <section class="apresentacao">
+      <h2>Você já tem repertório.</h2>
+      <p>
+        Organize seus conhecimentos e descubra como utilizá-los
+        na redação do ENEM.
+      </p>
+    </section>
+
+    <section class="quadros">
+
+      <div class="card">
+        <h3>🎬 Filmes e séries</h3>
+        <p>
+          Organize filmes, séries e documentários que podem
+          ser utilizados como repertório.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📖 Livros</h3>
+        <p>
+          Guarde livros, autores e ideias que podem ajudar
+          na construção dos seus argumentos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🧠 Pensadores</h3>
+        <p>
+          Organize filósofos, sociólogos e outros pensadores
+          relacionados a diferentes temas.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🌎 Atualidades</h3>
+        <p>
+          Registre acontecimentos e informações que podem
+          enriquecer sua redação.
+        </p>
+      </div>
+
+    </section>
+
+    <div class="acao">
+      <button>Começar meu quadro</button>
+    </div>
+
+  </main>
+
+  <footer>
+    Projeto educacional — Repertórios e Quadros
+  </footer>
+
+</body>
+</html>

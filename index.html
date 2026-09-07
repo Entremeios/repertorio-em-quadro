@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Repertórios e Quadros</title>
+
+  <title>Repertório em Quadro</title>
 
   <style>
     * {
@@ -14,162 +15,206 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #f5f3ff;
-      color: #242038;
+      background: #f7f5ff;
+      color: #27233a;
     }
 
+    /* CABEÇALHO */
+
     header {
-      background: #6c4cff;
-      color: white;
-      padding: 20px 8%;
+      background: #ffffff;
+      border-bottom: 1px solid #e8e4f5;
+      padding: 18px 6%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
-    header h1 {
-      font-size: 24px;
-    }
-
-    header button {
-      background: white;
-      color: #6c4cff;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      cursor: pointer;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
       font-weight: bold;
+      color: #6547d9;
     }
 
-    .principal {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 20px;
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: #6547d9;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
     }
 
-    .apresentacao {
-      text-align: center;
-      margin-bottom: 40px;
+    .entrar {
+      border: none;
+      background: #6547d9;
+      color: white;
+      padding: 11px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-    .apresentacao h2 {
-      font-size: 40px;
+    /* CONTEÚDO PRINCIPAL */
+
+    main {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 55px 0;
+    }
+
+    .boas-vindas {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+
+    .texto h1 {
+      font-size: 42px;
+      line-height: 1.1;
       margin-bottom: 15px;
     }
 
-    .apresentacao p {
-      font-size: 18px;
-      color: #625d73;
+    .texto h1 span {
+      color: #6547d9;
     }
 
-    .quadros {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
+    .texto p {
+      color: #706b82;
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 650px;
     }
 
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      color: #6c4cff;
-    }
-
-    .card p {
-      color: #625d73;
-      line-height: 1.5;
-    }
-
-    .acao {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .acao button {
-      background: #6c4cff;
+    .adicionar {
+      background: #6547d9;
       color: white;
       border: none;
-      padding: 14px 25px;
+      padding: 15px 23px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 8px 20px rgba(101, 71, 217, 0.20);
+    }
+
+    .adicionar:hover,
+    .entrar:hover {
+      opacity: 0.9;
+    }
+
+    /* BARRA DE PESQUISA */
+
+    .ferramentas {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 28px;
+      box-shadow: 0 5px 20px rgba(40, 30, 80, 0.06);
+    }
+
+    .pesquisa {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1px solid #e4e0ef;
       border-radius: 10px;
-      font-size: 16px;
+      outline: none;
+      font-size: 15px;
+      background: #faf9fd;
+    }
+
+    .categorias {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .categoria {
+      border: none;
+      background: #f0edfb;
+      color: #6256a0;
+      padding: 8px 13px;
+      border-radius: 20px;
+      font-size: 13px;
       cursor: pointer;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #777;
+    .categoria.ativa {
+      background: #6547d9;
+      color: white;
     }
-  </style>
-</head>
 
-<body>
+    /* QUADRO */
 
-  <header>
-    <h1>📚 Repertórios e Quadros</h1>
-    <button>Entrar</button>
-  </header>
+    .titulo-quadro {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 35px 0 18px;
+    }
 
-  <main class="principal">
+    .titulo-quadro h2 {
+      font-size: 23px;
+    }
 
-    <section class="apresentacao">
-      <h2>Você já tem repertório.</h2>
-      <p>
-        Organize seus conhecimentos e descubra como utilizá-los
-        na redação do ENEM.
-      </p>
-    </section>
+    .titulo-quadro span {
+      color: #817b92;
+      font-size: 14px;
+    }
 
-    <section class="quadros">
+    .quadro {
+      columns: 4 230px;
+      column-gap: 18px;
+    }
 
-      <div class="card">
-        <h3>🎬 Filmes e séries</h3>
-        <p>
-          Organize filmes, séries e documentários que podem
-          ser utilizados como repertório.
-        </p>
-      </div>
+    /* CARDS */
 
-      <div class="card">
-        <h3>📖 Livros</h3>
-        <p>
-          Guarde livros, autores e ideias que podem ajudar
-          na construção dos seus argumentos.
-        </p>
-      </div>
+    .card {
+      background: white;
+      border-radius: 17px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      break-inside: avoid;
+      box-shadow: 0 5px 18px rgba(40, 30, 80, 0.08);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-      <div class="card">
-        <h3>🧠 Pensadores</h3>
-        <p>
-          Organize filósofos, sociólogos e outros pensadores
-          relacionados a diferentes temas.
-        </p>
-      </div>
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(40, 30, 80, 0.13);
+    }
 
-      <div class="card">
-        <h3>🌎 Atualidades</h3>
-        <p>
-          Registre acontecimentos e informações que podem
-          enriquecer sua redação.
-        </p>
-      </div>
+    .imagem {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
 
-    </section>
+    .conteudo-card {
+      padding: 17px;
+    }
 
-    <div class="acao">
-      <button>Começar meu quadro</button>
-    </div>
+    .conteudo-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
 
-  </main>
-
-  <footer>
-    Projeto educacional — Repertórios e Quadros
-  </footer>
-
-</body>
-</html>
+    .conteudo-card p {
+      color: #

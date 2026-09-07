@@ -19,10 +19,8 @@
       color: #27233a;
     }
 
-    /* CABEÇALHO */
-
     header {
-      background: #ffffff;
+      background: white;
       border-bottom: 1px solid #e8e4f5;
       padding: 18px 6%;
       display: flex;
@@ -51,21 +49,24 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 20px;
     }
 
-    .entrar {
-      border: none;
-      background: #6547d9;
-      color: white;
-      padding: 11px 20px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: bold;
+    button {
       cursor: pointer;
     }
 
-    /* CONTEÚDO PRINCIPAL */
+    .entrar,
+    .adicionar {
+      border: none;
+      background: #6547d9;
+      color: white;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .entrar {
+      padding: 11px 20px;
+    }
 
     main {
       width: 90%;
@@ -84,7 +85,6 @@
 
     .texto h1 {
       font-size: 42px;
-      line-height: 1.1;
       margin-bottom: 15px;
     }
 
@@ -100,41 +100,26 @@
     }
 
     .adicionar {
-      background: #6547d9;
-      color: white;
-      border: none;
       padding: 15px 23px;
-      border-radius: 12px;
       font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
       white-space: nowrap;
-      box-shadow: 0 8px 20px rgba(101, 71, 217, 0.20);
     }
-
-    .adicionar:hover,
-    .entrar:hover {
-      opacity: 0.9;
-    }
-
-    /* BARRA DE PESQUISA */
 
     .ferramentas {
       background: white;
       border-radius: 16px;
       padding: 18px;
       margin-bottom: 28px;
-      box-shadow: 0 5px 20px rgba(40, 30, 80, 0.06);
+      box-shadow: 0 5px 20px rgba(40,30,80,.06);
     }
 
     .pesquisa {
       width: 100%;
-      padding: 13px 15px;
+      padding: 13px;
       border: 1px solid #e4e0ef;
       border-radius: 10px;
-      outline: none;
       font-size: 15px;
-      background: #faf9fd;
+      outline: none;
     }
 
     .categorias {
@@ -150,8 +135,6 @@
       color: #6256a0;
       padding: 8px 13px;
       border-radius: 20px;
-      font-size: 13px;
-      cursor: pointer;
     }
 
     .categoria.ativa {
@@ -159,12 +142,9 @@
       color: white;
     }
 
-    /* QUADRO */
-
     .titulo-quadro {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       margin: 35px 0 18px;
     }
 
@@ -182,22 +162,14 @@
       column-gap: 18px;
     }
 
-    /* CARDS */
-
     .card {
       background: white;
       border-radius: 17px;
       overflow: hidden;
       margin-bottom: 18px;
       break-inside: avoid;
-      box-shadow: 0 5px 18px rgba(40, 30, 80, 0.08);
+      box-shadow: 0 5px 18px rgba(40,30,80,.08);
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(40, 30, 80, 0.13);
     }
 
     .imagem {
@@ -212,9 +184,756 @@
     }
 
     .conteudo-card h3 {
-      font-size: 18px;
       margin-bottom: 8px;
     }
 
     .conteudo-card p {
-      color: #
+      color: #706b82;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 13px;
+    }
+
+    .tag {
+      background: #f0edfb;
+      color: #6547d9;
+      border-radius: 7px;
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .estrelas {
+      margin-top: 12px;
+      color: #f0ad32;
+      letter-spacing: 2px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px;
+      color: #858091;
+      font-size: 13px;
+    }
+
+    /* JANELA DO FORMULÁRIO */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 25, 50, .55);
+      z-index: 100;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal.abrir {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .janela {
+      background: white;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    }
+
+    .topo-modal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .topo-modal h2 {
+      color: #27233a;
+    }
+
+    .fechar {
+      border: none;
+      background: #f0edfb;
+      color: #6547d9;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      font-size: 20px;
+    }
+
+    .campo {
+      margin-bottom: 18px;
+    }
+
+    .campo label {
+      display: block;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .campo input,
+    .campo textarea,
+    .campo select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd8eb;
+      border-radius: 9px;
+      font-size: 14px;
+      outline: none;
+      font-family: Arial, sans-serif;
+    }
+
+    .campo textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .estrelas-form {
+      display: flex;
+      gap: 5px;
+    }
+
+    .estrela {
+      border: none;
+      background: transparent;
+      font-size: 28px;
+      color: #d6d2df;
+    }
+
+    .estrela.selecionada {
+      color: #f0ad32;
+    }
+
+    .acoes-modal {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .cancelar {
+      border: none;
+      background: #eeeaf7;
+      color: #554d69;
+      padding: 12px 20px;
+      border-radius: 9px;
+    }
+
+    .salvar {
+      border: none;
+      background: #6547d9;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 9px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 850px) {
+      .boas-vindas {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .adicionar {
+        width: 100%;
+      }
+
+      .quadro {
+        columns: 2 200px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .texto h1 {
+        font-size: 30px;
+      }
+
+      .quadro {
+        columns: 1;
+      }
+
+      .janela {
+        padding: 22px;
+      }
+
+      .imagem {
+        height: 210px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">📚</div>
+    Repertório em Quadro
+  </div>
+
+  <button class="entrar">
+    Entrar
+  </button>
+</header>
+
+<main>
+
+  <section class="boas-vindas">
+
+    <div class="texto">
+      <h1>
+        Você já tem <span>repertório.</span>
+      </h1>
+
+      <p>
+        Organize seus conhecimentos em um quadro visual
+        e descubra diferentes maneiras de utilizá-los
+        na redação do ENEM.
+      </p>
+    </div>
+
+    <button class="adicionar" onclick="abrirModal()">
+      ＋ Adicionar repertório
+    </button>
+
+  </section>
+
+  <section class="ferramentas">
+
+    <input
+      class="pesquisa"
+      type="text"
+      placeholder="🔎 Pesquisar repertório..."
+    >
+
+    <div class="categorias">
+
+      <button class="categoria ativa">Todos</button>
+      <button class="categoria">Social</button>
+      <button class="categoria">Histórico</button>
+      <button class="categoria">Cultural</button>
+      <button class="categoria">Tecnologia</button>
+      <button class="categoria">Política</button>
+      <button class="categoria">Ambiental</button>
+
+    </div>
+
+  </section>
+
+  <div class="titulo-quadro">
+
+    <h2>Meu quadro</h2>
+
+    <span id="contador">
+      4 repertórios
+    </span>
+
+  </div>
+
+  <section class="quadro" id="quadro">
+
+    <article class="card">
+
+      <img
+        class="imagem"
+        src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=800&q=80"
+        alt="Livros"
+      >
+
+      <div class="conteudo-card">
+
+        <h3>Literatura</h3>
+
+        <p>
+          Obras literárias podem ajudar a relacionar
+          diferentes questões sociais, culturais e históricas.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Cultural</span>
+          <span class="tag">Histórico</span>
+        </div>
+
+        <div class="estrelas">
+          ★★★★★
+        </div>
+
+      </div>
+
+    </article>
+
+    <article class="card">
+
+      <img
+        class="imagem"
+        src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=800&q=80"
+        alt="Biblioteca"
+      >
+
+      <div class="conteudo-card">
+
+        <h3>Pensadores</h3>
+
+        <p>
+          Filósofos e sociólogos podem contribuir
+          para a construção e aprofundamento dos argumentos.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Social</span>
+          <span class="tag">Política</span>
+        </div>
+
+        <div class="estrelas">
+          ★★★★★
+        </div>
+
+      </div>
+
+    </article>
+
+    <article class="card">
+
+      <img
+        class="imagem"
+        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+        alt="Tecnologia"
+      >
+
+      <div class="conteudo-card">
+
+        <h3>Tecnologia</h3>
+
+        <p>
+          Tecnologias digitais podem ser relacionadas
+          a educação, trabalho, comunicação e sociedade.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Tecnologia</span>
+          <span class="tag">Social</span>
+        </div>
+
+        <div class="estrelas">
+          ★★★★★
+        </div>
+
+      </div>
+
+    </article>
+
+    <article class="card">
+
+      <img
+        class="imagem"
+        src="https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=800&q=80"
+        alt="Natureza"
+      >
+
+      <div class="conteudo-card">
+
+        <h3>Meio ambiente</h3>
+
+        <p>
+          Questões ambientais podem ser relacionadas
+          a políticas públicas, sociedade e desenvolvimento.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Ambiental</span>
+          <span class="tag">Política</span>
+        </div>
+
+        <div class="estrelas">
+          ★★★★★
+        </div>
+
+      </div>
+
+    </article>
+
+  </section>
+
+</main>
+
+<footer>
+  Repertório em Quadro · Projeto educacional
+</footer>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+  <div class="janela">
+
+    <div class="topo-modal">
+
+      <h2>Novo repertório</h2>
+
+      <button class="fechar" onclick="fecharModal()">
+        ×
+      </button>
+
+    </div>
+
+
+    <form onsubmit="salvarRepertorio(event)">
+
+      <div class="campo">
+
+        <label>
+          Nome do repertório
+        </label>
+
+        <input
+          id="nome"
+          type="text"
+          placeholder="Ex.: Sociedade do Espetáculo"
+          required
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Imagem
+        </label>
+
+        <input
+          id="imagem"
+          type="url"
+          placeholder="Cole aqui o endereço de uma imagem"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Resumo
+        </label>
+
+        <textarea
+          id="resumo"
+          placeholder="Explique brevemente o repertório..."
+          required
+        ></textarea>
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Categoria principal
+        </label>
+
+        <select id="categoria">
+
+          <option value="Social">
+            Social
+          </option>
+
+          <option value="Histórico">
+            Histórico
+          </option>
+
+          <option value="Cultural">
+            Cultural
+          </option>
+
+          <option value="Tecnologia">
+            Tecnologia
+          </option>
+
+          <option value="Política">
+            Política
+          </option>
+
+          <option value="Ambiental">
+            Ambiental
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Temas relacionados
+        </label>
+
+        <input
+          id="temas"
+          type="text"
+          placeholder="Ex.: educação, desigualdade, tecnologia"
+        >
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Como posso utilizar na redação?
+        </label>
+
+        <textarea
+          id="utilizacao"
+          placeholder="Explique em quais situações esse repertório pode ser usado..."
+        ></textarea>
+
+      </div>
+
+
+      <div class="campo">
+
+        <label>
+          Minha avaliação
+        </label>
+
+        <div class="estrelas-form">
+
+          <button
+            type="button"
+            class="estrela"
+            onclick="avaliar(1)"
+          >★</button>
+
+          <button
+            type="button"
+            class="estrela"
+            onclick="avaliar(2)"
+          >★</button>
+
+          <button
+            type="button"
+            class="estrela"
+            onclick="avaliar(3)"
+          >★</button>
+
+          <button
+            type="button"
+            class="estrela"
+            onclick="avaliar(4)"
+          >★</button>
+
+          <button
+            type="button"
+            class="estrela"
+            onclick="avaliar(5)"
+          >★</button>
+
+        </div>
+
+      </div>
+
+
+      <div class="acoes-modal">
+
+        <button
+          type="button"
+          class="cancelar"
+          onclick="fecharModal()"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          class="salvar"
+        >
+          Salvar repertório
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  let nota = 0;
+
+
+  function abrirModal() {
+
+    document
+      .getElementById("modal")
+      .classList.add("abrir");
+
+  }
+
+
+  function fecharModal() {
+
+    document
+      .getElementById("modal")
+      .classList.remove("abrir");
+
+  }
+
+
+  function avaliar(valor) {
+
+    nota = valor;
+
+    const estrelas =
+      document.querySelectorAll(".estrela");
+
+    estrelas.forEach((estrela, index) => {
+
+      if (index < valor) {
+        estrela.classList.add("selecionada");
+      } else {
+        estrela.classList.remove("selecionada");
+      }
+
+    });
+
+  }
+
+
+  function salvarRepertorio(event) {
+
+    event.preventDefault();
+
+    const nome =
+      document.getElementById("nome").value;
+
+    const imagem =
+      document.getElementById("imagem").value;
+
+    const resumo =
+      document.getElementById("resumo").value;
+
+    const categoria =
+      document.getElementById("categoria").value;
+
+    const temas =
+      document.getElementById("temas").value;
+
+    const utilizacao =
+      document.getElementById("utilizacao").value;
+
+
+    const imagemFinal =
+      imagem ||
+      "https://images.unsplash.com/photo-1457369804613-52c61a468e7e?auto=format&fit=crop&w=800&q=80";
+
+
+    let estrelas = "";
+
+    for (let i = 1; i <= 5; i++) {
+
+      if (i <= nota) {
+        estrelas += "★";
+      } else {
+        estrelas += "☆";
+      }
+
+    }
+
+
+    const card = document.createElement("article");
+
+    card.className = "card";
+
+
+    card.innerHTML = `
+
+      <img
+        class="imagem"
+        src="${imagemFinal}"
+        alt="${nome}"
+      >
+
+      <div class="conteudo-card">
+
+        <h3>${nome}</h3>
+
+        <p>${resumo}</p>
+
+        <div class="tags">
+
+          <span class="tag">
+            ${categoria}
+          </span>
+
+          ${
+            temas
+              ? `<span class="tag">${temas}</span>`
+              : ""
+          }
+
+        </div>
+
+        <div class="estrelas">
+          ${estrelas}
+        </div>
+
+      </div>
+
+    `;
+
+
+    document
+      .getElementById("quadro")
+      .prepend(card);
+
+
+    atualizarContador();
+
+    fecharModal();
+
+
+    document.querySelector("form").reset();
+
+    nota = 0;
+
+
+    document
+      .querySelectorAll(".estrela")
+      .forEach(estrela => {
+
+        estrela.classList.remove("selecionada");
+
+      });
+
+  }
+
+
+  function atualizarContador() {
+
+    const quantidade =
+      document.querySelectorAll(".card").length;
+
+    document.getElementById("contador").textContent =
+      quantidade + " repertórios";
+
+  }
+
+</script>
+
+</body>
+</html>

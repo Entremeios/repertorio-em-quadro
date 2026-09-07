@@ -369,7 +369,53 @@
       .imagem {
         height: 210px;
       }
-    }
+    } 
+    .detalhes {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.imagem-detalhes {
+  width: 100%;
+  max-height: 330px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 18px;
+}
+
+.detalhe-estrelas {
+  color: #f0ad32;
+  font-size: 22px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.detalhe-bloco {
+  margin-bottom: 20px;
+}
+
+.detalhe-bloco strong {
+  display: block;
+  color: #6547d9;
+  margin-bottom: 7px;
+  font-size: 15px;
+}
+
+.detalhe-bloco p {
+  color: #625d73;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+#detalheCategoria {
+  display: inline-block;
+  background: #f0edfb;
+  color: #6547d9;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
   </style>
 </head>
 
@@ -563,7 +609,59 @@
     </article>
 
   </section>
+<!-- JANELA DE DETALHES -->
 
+<div class="modal" id="modalDetalhes">
+
+  <div class="janela detalhes">
+
+    <div class="topo-modal">
+
+      <h2 id="detalheNome">
+        Repertório
+      </h2>
+
+      <button
+        class="fechar"
+        onclick="fecharDetalhes()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <img
+      id="detalheImagem"
+      class="imagem-detalhes"
+      src=""
+      alt=""
+    >
+
+    <div class="detalhe-estrelas" id="detalheEstrelas"></div>
+
+    <div class="detalhe-bloco">
+      <strong>Categoria</strong>
+      <div id="detalheCategoria"></div>
+    </div>
+
+    <div class="detalhe-bloco">
+      <strong>Resumo</strong>
+      <p id="detalheResumo"></p>
+    </div>
+
+    <div class="detalhe-bloco">
+      <strong>Temas relacionados</strong>
+      <p id="detalheTemas"></p>
+    </div>
+
+    <div class="detalhe-bloco">
+      <strong>Como utilizar na redação?</strong>
+      <p id="detalheUtilizacao"></p>
+    </div>
+
+  </div>
+
+</div>
 </main>
 
 <footer>
@@ -932,7 +1030,48 @@
       quantidade + " repertórios";
 
   }
+  function abrirDetalhes(card) {
 
+  const imagem = card.querySelector(".imagem").src;
+  const nome = card.querySelector("h3").textContent;
+  const resumo = card.querySelector(".conteudo-card p").textContent;
+  const categoria = card.querySelector(".tag").textContent;
+
+  const tags = card.querySelectorAll(".tag");
+
+  let temas = "Não informado";
+
+  if (tags.length > 1) {
+    temas = Array.from(tags)
+      .slice(1)
+      .map(tag => tag.textContent)
+      .join(", ");
+  }
+
+  const estrelas =
+    card.querySelector(".estrelas").textContent.trim();
+
+  document.getElementById("detalheImagem").src = imagem;
+  document.getElementById("detalheImagem").alt = nome;
+  document.getElementById("detalheNome").textContent = nome;
+  document.getElementById("detalheCategoria").textContent = categoria;
+  document.getElementById("detalheResumo").textContent = resumo;
+  document.getElementById("detalheTemas").textContent = temas;
+  document.getElementById("detalheEstrelas").textContent = estrelas;
+
+  document
+    .getElementById("modalDetalhes")
+    .classList.add("abrir");
+}
+
+
+function fecharDetalhes() {
+
+  document
+    .getElementById("modalDetalhes")
+    .classList.remove("abrir");
+
+}
 </script>
 
 </body>

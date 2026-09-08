@@ -1,1 +1,251 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Estante | Biblioteca Virtual Gonçalves Dias</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eee8d9;
+            color: #20271f;
+            font-family: Georgia, "Times New Roman", serif;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #536b4d;
+            color: white;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+        }
+
+        .titulo {
+            text-align: center;
+            padding: 55px 20px 30px;
+        }
+
+        .titulo span {
+            font-family: Arial, sans-serif;
+            color: #536b4d;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+        }
+
+        .titulo h1 {
+            font-size: 50px;
+            font-weight: normal;
+            margin-top: 12px;
+        }
+
+        .estante {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 35px;
+            background: #536b4d;
+            border: 8px solid #263728;
+            box-shadow: 0 15px 0 #263728;
+        }
+
+        .livros {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 18px;
+            align-items: end;
+        }
+
+        .livro {
+            height: 280px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            border-radius: 3px 3px 0 0;
+            border: 3px solid #20271f;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.25);
+            transition: 0.3s;
+        }
+
+        .livro:hover {
+            transform: translateY(-15px) rotate(-1deg);
+        }
+
+        .livro h2 {
+            font-size: 23px;
+            font-weight: normal;
+        }
+
+        .livro small {
+            display: block;
+            margin-top: 12px;
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+        }
+
+        .literatura {
+            background: #725846;
+        }
+
+        .artes {
+            background: #7b684b;
+        }
+
+        .filosofos {
+            background: #454f61;
+        }
+
+        .atualidades {
+            background: #665b48;
+        }
+
+        .diario {
+            background: #76534a;
+        }
+
+        .cadernos {
+            background: #4f6452;
+        }
+
+        .prateleira {
+            height: 22px;
+            background: #263728;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 45px 20px;
+            font-family: Arial, sans-serif;
+            color: #666;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+
+            .livros {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .livros {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .livro {
+                height: 230px;
+            }
+
+            .titulo h1 {
+                font-size: 38px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <strong>Biblioteca Virtual Gonçalves Dias</strong>
+
+        <a href="index.html">← Voltar</a>
+
+    </header>
+
+    <section class="titulo">
+
+        <span>Biblioteca</span>
+
+        <h1>Minha Estante</h1>
+
+    </section>
+
+    <main class="estante">
+
+        <div class="livros">
+
+            <a class="livro literatura" href="paginas/literatura.html">
+                <div>
+                    <h2>Literatura</h2>
+                    <small>Livros, autores e obras</small>
+                </div>
+            </a>
+
+            <a class="livro artes" href="paginas/artes.html">
+                <div>
+                    <h2>Artes</h2>
+                    <small>Expressões e criações</small>
+                </div>
+            </a>
+
+            <a class="livro filosofos" href="paginas/filosofos.html">
+                <div>
+                    <h2>Filósofos<br>e Pensadores</h2>
+                    <small>Ideias que transformaram o mundo</small>
+                </div>
+            </a>
+
+            <a class="livro atualidades" href="paginas/atualidades.html">
+                <div>
+                    <h2>Atualidades</h2>
+                    <small>O mundo de hoje</small>
+                </div>
+            </a>
+
+            <a class="livro diario" href="paginas/diario-leitura.html">
+                <div>
+                    <h2>Diário<br>de Leitura</h2>
+                    <small>Minhas leituras</small>
+                </div>
+            </a>
+
+            <a class="livro cadernos" href="paginas/cadernos.html">
+                <div>
+                    <h2>Cadernos</h2>
+                    <small>Meus escritos</small>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="prateleira"></div>
+
+    </main>
+
+    <footer>
+        Biblioteca Virtual Gonçalves Dias
+    </footer>
+
+</body>
+
+</html>
+```
 

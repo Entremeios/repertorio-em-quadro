@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artes | Biblioteca Virtual Gonçalves Dias</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f1e8;
+    color: #18251d;
+    min-height: 100vh;
+}
+
+/* CABEÇALHO */
+
+header {
+    height: 76px;
+    background: #304b38;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    line-height: 1.1;
+}
+
+.logo-text small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 3px;
+}
+
+.voltar {
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.5);
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* TÍTULO */
+
+.hero {
+    text-align: center;
+    padding: 55px 20px 35px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 600;
+}
+
+.hero p {
+    margin-top: 12px;
+    color: #667068;
+}
+
+/* CIDADE */
+
+.cidade {
+    width: 90%;
+    max-width: 1150px;
+    margin: 20px auto 70px;
+    background: #dfe3d7;
+    border: 8px solid #304b38;
+    border-radius: 20px;
+    padding: 55px 35px 45px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cidade::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 105px;
+    background: #304b38;
+    opacity: .08;
+}
+
+.predios {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+/* PRÉDIOS */
+
+.predio {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #18251d;
+    transition: transform .25s;
+}
+
+.predio:hover {
+    transform: translateY(-10px);
+}
+
+.predio-topo {
+    height: 52px;
+    background: #304b38;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+}
+
+.predio-topo::before {
+    content: "";
+    position: absolute;
+    width: 70%;
+    height: 15px;
+    background: #304b38;
+    top: -12px;
+    border-radius: 50% 50% 0 0;
+}
+
+.predio-corpo {
+    min-height: 190px;
+    background: #f8f5ed;
+    border: 5px solid #304b38;
+    border-top: none;
+    padding: 18px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,.12);
+}
+
+.icone {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.predio h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+}
+
+.predio p {
+    font-size: 12px;
+    color: #69736c;
+    margin-top: 7px;
+}
+
+/* BOTÃO */
+
+.add-area {
+    text-align: center;
+    margin-top: 42px;
+    position: relative;
+    z-index: 3;
+}
+
+.btn-add {
+    background: #304b38;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.btn-add:hover {
+    background: #203728;
+}
+
+/* ÁREAS */
+
+.area {
+    display: none;
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 70px;
+}
+
+.area.ativa {
+    display: block;
+}
+
+.area-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #304b38;
+    padding-bottom: 12px;
+}
+
+.area-titulo h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+}
+
+.fechar-area {
+    background: transparent;
+    border: 1px solid #304b38;
+    color: #304b38;
+    border-radius: 20px;
+    padding: 7px 15px;
+    cursor: pointer;
+}
+
+/* GALERIA */
+
+.obras-galeria {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.obra-pintura {
+    background: #fffdf7;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.08);
+}
+
+.moldura {
+    width: 250px;
+    height: 190px;
+    padding: 12px;
+    background: #304b38;
+    flex-shrink: 0;
+}
+
+.moldura img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #ddd;
+}
+
+.info-obra h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+}
+
+.info-obra p {
+    margin-top: 8px;
+    color: #667068;
+}
+
+.tipo-obra {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* MUSEU */
+
+.obras-museu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.obra-museu {
+    background: #fffdf7;
+    padding: 18px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.08);
+}
+
+.obra-museu img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.obra-museu h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    margin-top: 15px;
+}
+
+/* BILHETERIA */
+
+.obras-cinema {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.ingresso {
+    background: #fffdf7;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0,0,0,.1);
+}
+
+.ingresso img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.ingresso-info {
+    padding: 18px;
+}
+
+.ingresso h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+}
+
+/* DISCOGRAFIA */
+
+.obras-musica {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.disco {
+    width: 270px;
+    background: #fffdf7;
+    padding: 20px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.1);
+    text-align: center;
+}
+
+.disco-capa {
+    width: 210px;
+    height: 210px;
+    margin: auto;
+    border-radius: 50%;
+    background: #18251d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.disco-capa img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.disco h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    margin-top: 18px;
+}
+
+/* VAZIO */
+
+.vazio {
+    text-align: center;
+    padding: 60px 20px;
+    color: #788078;
+    background: #fffdf7;
+    border: 1px dashed #9ba49c;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,25,18,.72);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.formulario {
+    width: 100%;
+    max-width: 550px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #f8f5ed;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.formulario h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    margin-bottom: 22px;
+}
+
+.campo {
+    margin-bottom: 17px;
+}
+
+.campo label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #b8beb8;
+    border-radius: 7px;
+    background: white;
+    font-size: 14px;
+}
+
+.botoes-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.botoes-form button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.salvar {
+    background: #304b38;
+    color: white;
+    border: none;
+}
+
+.cancelar {
+    background: transparent;
+    border: 1px solid #304b38;
+    color: #304b38;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 800px) {
+    .predios {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .obra-pintura {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .moldura {
+        width: 100%;
+        height: 230px;
+    }
+}
+
+@media (max-width: 520px) {
+    .predios {
+        grid-template-columns: 1fr;
+    }
+
+    .cidade {
+        padding: 40px 20px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <div class="logo-icon">📖</div>
+        <div class="logo-text">
+            Biblioteca Virtual
+            <small>GONÇALVES DIAS</small>
+        </div>
+    </div>
+
+    <a href="../estante.html" class="voltar">← Estante</a>
+</header>
+
+<section class="hero">
+    <h1>Artes</h1>
+    <p>Uma cidade dedicada às diferentes formas de expressão artística.</p>
+</section>
+
+<section class="cidade">
+
+    <div class="predios">
+
+        <button class="predio" onclick="abrirArea('galeria')">
+            <div class="predio-topo">ARTES VISUAIS</div>
+            <div class="predio-corpo">
+                <div class="icone">🖼️</div>
+                <h2>Galeria</h2>
+                <p>Pinturas e obras visuais</p>
+            </div>
+        </button>
+
+        <button class="predio" onclick="abrirArea('museu')">
+            <div class="predio-topo">EXPOSIÇÃO</div>
+            <div class="predio-corpo">
+                <div class="icone">🏛️</div>
+                <h2>Museu</h2>
+                <p>Esculturas e instalações</p>
+            </div>
+        </button>
+
+        <button class="predio" onclick="abrirArea('bilheteria')">
+            <div class="predio-topo">CINEMA & PALCO</div>
+            <div class="predio-corpo">
+                <div class="icone">🎟️</div>
+                <h2>Bilheteria</h2>
+                <p>Teatro e cinema</p>
+            </div>
+        </button>
+
+        <button class="predio" onclick="abrirArea('discografia')">
+            <div class="predio-topo">MÚSICA</div>
+            <div class="predio-corpo">
+                <div class="icone">💿</div>
+                <h2>Discografia</h2>
+                <p>Músicas e compositores</p>
+            </div>
+        </button>
+
+    </div>
+
+    <div class="add-area">
+        <button class="btn-add" onclick="abrirModal()">
+            + Adicionar obra
+        </button>
+    </div>
+
+</section>
+
+<!-- GALERIA -->
+
+<section id="galeria" class="area">
+    <div class="area-titulo">
+        <h2>Galeria</h2>
+        <button class="fechar-area" onclick="fecharAreas()">Fechar</button>
+    </div>
+
+    <div id="listaGaleria" class="obras-galeria"></div>
+</section>
+
+<!-- MUSEU -->
+
+<section id="museu" class="area">
+    <div class="area-titulo">
+        <h2>Museu</h2>
+        <button class="fechar-area" onclick="fecharAreas()">Fechar</button>
+    </div>
+
+    <div id="listaMuseu" class="obras-museu"></div>
+</section>
+
+<!-- BILHETERIA -->
+
+<section id="bilheteria" class="area">
+    <div class="area-titulo">
+        <h2>Bilheteria</h2>
+        <button class="fechar-area" onclick="fecharAreas()">Fechar</button>
+    </div>
+
+    <div id="listaBilheteria" class="obras-cinema"></div>
+</section>
+
+<!-- DISCOGRAFIA -->
+
+<section id="discografia" class="area">
+    <div class="area-titulo">
+        <h2>Discografia</h2>
+        <button class="fechar-area" onclick="fecharAreas()">Fechar</button>
+    </div>
+
+    <div id="listaDiscografia" class="obras-musica"></div>
+</section>
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+
+    <div class="formulario">
+
+        <h2>Adicionar obra</h2>
+
+        <div class="campo">
+            <label>Tipo de obra</label>
+
+            <select id="tipo" onchange="atualizarCampos()">
+                <option value="pintura">Pintura</option>
+                <option value="escultura">Escultura</option>
+                <option value="instalacao">Instalação</option>
+                <option value="teatro">Teatro</option>
+                <option value="filme">Filme</option>
+                <option value="musica">Música</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label>Nome da obra</label>
+            <input id="nome" type="text" placeholder="Ex.: Noite estrelada">
+        </div>
+
+        <div class="campo">
+            <label id="labelAutor">Autor</label>
+            <input id="autor" type="text" placeholder="Nome do autor">
+        </div>
+
+        <div class="campo">
+            <label>Imagem da obra</label>
+            <input id="imagem" type="file" accept="image/*">
+        </div>
+
+        <div class="botoes-form">
+            <button class="cancelar" onclick="fecharModal()">
+                Cancelar
+            </button>
+
+            <button class="salvar" onclick="salvarObra()">
+                Adicionar
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+let obras = JSON.parse(localStorage.getItem("artesGoncalvesDias")) || [];
+
+
+/* MODAL */
+
+function abrirModal() {
+    document.getElementById("modal").classList.add("ativo");
+}
+
+function fecharModal() {
+    document.getElementById("modal").classList.remove("ativo");
+
+    document.getElementById("nome").value = "";
+    document.getElementById("autor").value = "";
+    document.getElementById("imagem").value = "";
+}
+
+
+/* CAMPOS */
+
+function atualizarCampos() {
+
+    const tipo = document.getElementById("tipo").value;
+    const label = document.getElementById("labelAutor");
+    const input = document.getElementById("autor");
+
+    if (tipo === "musica") {
+        label.textContent = "Compositor";
+        input.placeholder = "Nome do compositor";
+    }
+
+    else if (tipo === "teatro" || tipo === "filme") {
+        label.textContent = "Diretor";
+        input.placeholder = "Nome do diretor";
+    }
+
+    else if (tipo === "escultura") {
+        label.textContent = "Escultor";
+        input.placeholder = "Nome do escultor";
+    }
+
+    else if (tipo === "instalacao") {
+        label.textContent = "Arquiteto";
+        input.placeholder = "Nome do arquiteto";
+    }
+
+    else {
+        label.textContent = "Autor";
+        input.placeholder = "Nome do autor";
+    }
+}
+
+
+/* SALVAR */
+
+function salvarObra() {
+
+    const tipo = document.getElementById("tipo").value;
+    const nome = document.getElementById("nome").value.trim();
+    const autor = document.getElementById("autor").value.trim();
+    const arquivo = document.getElementById("imagem").files[0];
+
+    if (!nome || !autor) {
+        alert("Preencha o nome da obra e o responsável.");
+        return;
+    }
+
+    if (!arquivo) {
+        alert("Escolha uma imagem para a obra.");
+        return;
+    }
+
+    const leitor = new FileReader();
+
+    leitor.onload = function(e) {
+
+        const obra = {
+            id: Date.now(),
+            tipo: tipo,
+            nome: nome,
+            autor: autor,
+            imagem: e.target.result
+        };
+
+        obras.push(obra);
+
+        localStorage.setItem(
+            "artesGoncalvesDias",
+            JSON.stringify(obras)
+        );
+
+        fecharModal();
+        renderizarObras();
+
+        abrirArea(areaCorrespondente(tipo));
+    };
+
+    leitor.readAsDataURL(arquivo);
+}
+
+
+/* DEFINIR ÁREA */
+
+function areaCorrespondente(tipo) {
+
+    if (tipo === "pintura") {
+        return "galeria";
+    }
+
+    if (tipo === "escultura" || tipo === "instalacao") {
+        return "museu";
+    }
+
+    if (tipo === "teatro" || tipo === "filme") {
+        return "bilheteria";
+    }
+
+    if (tipo === "musica") {
+        return "discografia";
+    }
+}
+
+
+/* ABRIR ÁREA */
+
+function abrirArea(id) {
+
+    fecharAreas();
+
+    const area = document.getElementById(id);
+
+    area.classList.add("ativa");
+
+    setTimeout(() => {
+        area.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, 50);
+}
+
+
+function fecharAreas() {
+
+    document.querySelectorAll(".area").forEach(area => {
+        area.classList.remove("ativa");
+    });
+}
+
+
+/* RENDERIZAR */
+
+function renderizarObras() {
+
+    const galeria = document.getElementById("listaGaleria");
+    const museu = document.getElementById("listaMuseu");
+    const bilheteria = document.getElementById("listaBilheteria");
+    const discografia = document.getElementById("listaDiscografia");
+
+    galeria.innerHTML = "";
+    museu.innerHTML = "";
+    bilheteria.innerHTML = "";
+    discografia.innerHTML = "";
+
+
+    const pinturas =
+        obras.filter(o => o.tipo === "pintura");
+
+    const esculturas =
+        obras.filter(o =>
+            o.tipo === "escultura" ||
+            o.tipo === "instalacao"
+        );
+
+    const filmes =
+        obras.filter(o =>
+            o.tipo === "teatro" ||
+            o.tipo === "filme"
+        );
+
+    const musicas =
+        obras.filter(o => o.tipo === "musica");
+
+
+    /* GALERIA */
+
+    if (pinturas.length === 0) {
+
+        galeria.innerHTML = `
+            <div class="vazio">
+                <h3>A galeria está vazia.</h3>
+                <p>Adicione uma pintura para começar sua exposição.</p>
+            </div>
+        `;
+
+    } else {
+
+        pinturas.forEach(obra => {
+
+            galeria.innerHTML += `
+                <article class="obra-pintura">
+
+                    <div class="moldura">
+                        <img src="${obra.imagem}" alt="${obra.nome}">
+                    </div>
+
+                    <div class="info-obra">
+
+                        <h3>${obra.nome}</h3>
+
+                        <p>
+                            <strong>Autor:</strong>
+                            ${obra.autor}
+                        </p>
+
+                        <span class="tipo-obra">
+                            Pintura
+                        </span>
+
+                    </div>
+
+                </article>
+            `;
+
+        });
+
+    }
+
+
+    /* MUSEU */
+
+    if (esculturas.length === 0) {
+
+        museu.innerHTML = `
+            <div class="vazio">
+                <h3>O museu está vazio.</h3>
+                <p>Adicione uma escultura ou instalação.</p>
+            </div>
+        `;
+
+    } else {
+
+        esculturas.forEach(obra => {
+
+            museu.innerHTML += `
+                <article class="obra-museu">
+
+                    <img src="${obra.imagem}" alt="${obra.nome}">
+
+                    <h3>${obra.nome}</h3>
+
+                    <p>
+                        <strong>
+                            ${
+                                obra.tipo === "escultura"
+                                ? "Escultor"
+                                : "Arquiteto"
+                            }:
+                        </strong>
+
+                        ${obra.autor}
+                    </p>
+
+                </article>
+            `;
+
+        });
+
+    }
+
+
+    /* BILHETERIA */
+
+    if (filmes.length === 0) {
+
+        bilheteria.innerHTML = `
+            <div class="vazio">
+                <h3>A bilheteria está vazia.</h3>
+                <p>Adicione uma peça de teatro ou filme.</p>
+            </div>
+        `;
+
+    } else {
+
+        filmes.forEach(obra => {
+
+            bilheteria.innerHTML += `
+                <article class="ingresso">
+
+                    <img src="${obra.imagem}" alt="${obra.nome}">
+
+                    <div class="ingresso-info">
+
+                        <h3>${obra.nome}</h3>
+
+                        <p>
+                            <strong>Diretor:</strong>
+                            ${obra.autor}
+                        </p>
+
+                        <p>
+                            ${obra.tipo === "filme"
+                            ? "Filme"
+                            : "Teatro"}
+                        </p>
+
+                    </div>
+
+                </article>
+            `;
+
+        });
+
+    }
+
+
+    /* DISCOGRAFIA */
+
+    if (musicas.length === 0) {
+
+        discografia.innerHTML = `
+            <div class="vazio">
+                <h3>A discografia está vazia.</h3>
+                <p>Adicione uma música para começar.</p>
+            </div>
+        `;
+
+    } else {
+
+        musicas.forEach(obra => {
+
+            discografia.innerHTML += `
+                <article class="disco">
+
+                    <div class="disco-capa">
+
+                        <img
+                            src="${obra.imagem}"
+                            alt="${obra.nome}"
+                        >
+
+                    </div>
+
+                    <h3>${obra.nome}</h3>
+
+                    <p>
+                        <strong>Compositor:</strong>
+                        ${obra.autor}
+                    </p>
+
+                </article>
+            `;
+
+        });
+
+    }
+
+}
+
+
+/* INICIAR */
+
+renderizarObras();
+
+</script>
+
+</body>
+</html>

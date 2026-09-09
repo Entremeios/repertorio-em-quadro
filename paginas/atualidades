@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Atualidades | Biblioteca Virtual Gonçalves Dias</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f5f1e8;
+    color: #1d2b21;
+    font-family: 'Inter', sans-serif;
+}
+
+/* CABEÇALHO */
+
+header {
+    height: 76px;
+    background: #304b38;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    line-height: 1.1;
+}
+
+.logo-text small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 3px;
+}
+
+.voltar {
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.5);
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* TOPO */
+
+.topo {
+    max-width: 1100px;
+    margin: auto;
+    padding: 55px 20px 25px;
+}
+
+.topo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 70px);
+}
+
+.topo p {
+    margin-top: 10px;
+    color: #69736c;
+    max-width: 650px;
+}
+
+/* BOTÃO */
+
+.area-botao {
+    max-width: 1100px;
+    margin: 0 auto 35px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-adicionar {
+    background: #304b38;
+    color: white;
+    border: none;
+    padding: 13px 23px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-adicionar:hover {
+    background: #203728;
+}
+
+/* ESTANTE */
+
+.estante {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding-bottom: 80px;
+}
+
+.prateleira {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 28px;
+    align-items: end;
+}
+
+/* LIVRO */
+
+.livro {
+    position: relative;
+    cursor: pointer;
+    transition: transform .25s;
+}
+
+.livro:hover {
+    transform: translateY(-8px);
+}
+
+.livro-capa {
+    min-height: 315px;
+    background: #fffdf7;
+    border: 1px solid #d8ddd5;
+    border-radius: 5px 9px 9px 5px;
+    box-shadow: 8px 10px 18px rgba(0,0,0,.12);
+    overflow: hidden;
+    position: relative;
+}
+
+.livro-imagem {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.livro-conteudo {
+    padding: 17px;
+}
+
+.livro-conteudo h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.livro-conteudo .fonte {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #68736b;
+}
+
+.data {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 10px;
+    padding: 5px 9px;
+    border-radius: 15px;
+    background: #e3e9df;
+    color: #304b38;
+}
+
+.linha-prateleira {
+    height: 14px;
+    background: #304b38;
+    margin-top: 8px;
+    border-radius: 3px;
+}
+
+/* VAZIO */
+
+.vazio {
+    text-align: center;
+    padding: 90px 20px;
+    border: 1px dashed #aeb7ae;
+    border-radius: 15px;
+    background: rgba(255,255,255,.35);
+    color: #737d75;
+}
+
+.vazio-icone {
+    font-size: 52px;
+    margin-bottom: 15px;
+}
+
+.vazio h2 {
+    font-family: 'Playfair Display', serif;
+    color: #304b38;
+    margin-bottom: 8px;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,25,18,.75);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.formulario {
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #f8f5ed;
+    padding: 30px;
+    border-radius: 16px;
+}
+
+.formulario h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 31px;
+    margin-bottom: 25px;
+}
+
+.campo {
+    margin-bottom: 17px;
+}
+
+.campo label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #b9c0b9;
+    border-radius: 7px;
+    background: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.campo textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.botoes button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.cancelar {
+    background: transparent;
+    border: 1px solid #304b38;
+    color: #304b38;
+}
+
+.salvar {
+    background: #304b38;
+    color: white;
+    border: none;
+}
+
+/* DETALHES */
+
+.detalhes {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,25,18,.78);
+    z-index: 150;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.detalhes.ativo {
+    display: flex;
+}
+
+.detalhes-caixa {
+    width: 100%;
+    max-width: 850px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #f8f5ed;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.detalhes-topo {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+}
+
+.detalhes-imagem {
+    width: 270px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 7px;
+    flex-shrink: 0;
+}
+
+.detalhes-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+}
+
+.detalhes-info .fonte-grande {
+    margin-top: 8px;
+    color: #69736c;
+}
+
+.secao {
+    margin-top: 28px;
+}
+
+.secao h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #304b38;
+    margin-bottom: 8px;
+}
+
+.secao p {
+    color: #4e5951;
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+.botoes-detalhes {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.botoes-detalhes button {
+    padding: 11px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.fechar {
+    background: transparent;
+    border: 1px solid #304b38;
+    color: #304b38;
+}
+
+.editar {
+    background: #304b38;
+    color: white;
+    border: none;
+}
+
+.excluir {
+    background: #222;
+    color: white;
+    border: none;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:700px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .area-botao {
+        justify-content: center;
+    }
+
+    .btn-adicionar {
+        width: 100%;
+    }
+
+    .detalhes-topo {
+        flex-direction: column;
+    }
+
+    .detalhes-imagem {
+        width: 100%;
+        height: 220px;
+    }
+
+    .botoes-detalhes {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">📖</div>
+
+        <div class="logo-text">
+            Biblioteca Virtual
+            <small>GONÇALVES DIAS</small>
+        </div>
+
+    </div>
+
+    <a href="../estante.html" class="voltar">
+        ← Estante
+    </a>
+
+</header>
+
+
+<section class="topo">
+
+    <h1>Atualidades</h1>
+
+    <p>
+        Uma estante para guardar acontecimentos, notícias,
+        debates e assuntos importantes do mundo.
+    </p>
+
+</section>
+
+
+<div class="area-botao">
+
+    <button class="btn-adicionar" onclick="abrirModal()">
+        + Adicionar atualidade
+    </button>
+
+</div>
+
+
+<section class="estante">
+
+    <div id="prateleira" class="prateleira"></div>
+
+</section>
+
+
+<!-- MODAL DE CADASTRO -->
+
+<div id="modal" class="modal">
+
+    <div class="formulario">
+
+        <h2 id="tituloModal">
+            Nova atualidade
+        </h2>
+
+
+        <div class="campo">
+
+            <label>Imagem</label>
+
+            <input
+                id="imagem"
+                type="file"
+                accept="image/*"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Título</label>
+
+            <input
+                id="titulo"
+                type="text"
+                placeholder="Título da atualidade"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Fonte</label>
+
+            <input
+                id="fonte"
+                type="text"
+                placeholder="Ex.: Agência, jornal, revista..."
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Data</label>
+
+            <input
+                id="data"
+                type="date"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Resumo</label>
+
+            <textarea
+                id="resumo"
+                placeholder="Explique o que aconteceu..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Minha opinião</label>
+
+            <textarea
+                id="opiniao"
+                placeholder="O que você pensa sobre isso?"
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Relação com redação</label>
+
+            <textarea
+                id="redacao"
+                placeholder="Como esse assunto poderia ser usado em uma redação?"
+            ></textarea>
+
+        </div>
+
+
+        <div class="botoes">
+
+            <button
+                class="cancelar"
+                onclick="fecharModal()"
+            >
+                Cancelar
+            </button>
+
+            <button
+                class="salvar"
+                onclick="salvarAtualidade()"
+            >
+                Salvar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MODAL DE DETALHES -->
+
+<div id="detalhes" class="detalhes">
+
+    <div class="detalhes-caixa">
+
+        <div id="conteudoDetalhes"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let atualidades =
+    JSON.parse(
+        localStorage.getItem("atualidadesGoncalvesDias")
+    ) || [];
+
+let editando = null;
+
+
+/* ABRIR MODAL */
+
+function abrirModal(id = null) {
+
+    editando = id;
+
+    document
+        .getElementById("modal")
+        .classList.add("ativo");
+
+    if (id !== null) {
+
+        const item =
+            atualidades.find(
+                a => a.id === id
+            );
+
+        document.getElementById("tituloModal")
+            .textContent = "Editar atualidade";
+
+        document.getElementById("titulo").value =
+            item.titulo;
+
+        document.getElementById("fonte").value =
+            item.fonte;
+
+        document.getElementById("data").value =
+            item.data;
+
+        document.getElementById("resumo").value =
+            item.resumo;
+
+        document.getElementById("opiniao").value =
+            item.opiniao;
+
+        document.getElementById("redacao").value =
+            item.redacao;
+
+    } else {
+
+        document.getElementById("tituloModal")
+            .textContent = "Nova atualidade";
+
+        limparFormulario();
+    }
+}
+
+
+/* FECHAR */
+
+function fecharModal() {
+
+    document
+        .getElementById("modal")
+        .classList.remove("ativo");
+
+    limparFormulario();
+
+    editando = null;
+}
+
+
+/* LIMPAR */
+
+function limparFormulario() {
+
+    document.getElementById("imagem").value = "";
+    document.getElementById("titulo").value = "";
+    document.getElementById("fonte").value = "";
+    document.getElementById("data").value = "";
+    document.getElementById("resumo").value = "";
+    document.getElementById("opiniao").value = "";
+    document.getElementById("redacao").value = "";
+}
+
+
+/* SALVAR */
+
+function salvarAtualidade() {
+
+    const titulo =
+        document.getElementById("titulo")
+        .value.trim();
+
+    const fonte =
+        document.getElementById("fonte")
+        .value.trim();
+
+    const data =
+        document.getElementById("data")
+        .value;
+
+    const resumo =
+        document.getElementById("resumo")
+        .value.trim();
+
+    const opiniao =
+        document.getElementById("opiniao")
+        .value.trim();
+
+    const redacao =
+        document.getElementById("redacao")
+        .value.trim();
+
+    const arquivo =
+        document.getElementById("imagem")
+        .files[0];
+
+
+    if (!titulo) {
+
+        alert("Digite o título da atualidade.");
+
+        return;
+    }
+
+
+    /* EDITAR */
+
+    if (editando !== null) {
+
+        const item =
+            atualidades.find(
+                a => a.id === editando
+            );
+
+        item.titulo = titulo;
+        item.fonte = fonte;
+        item.data = data;
+        item.resumo = resumo;
+        item.opiniao = opiniao;
+        item.redacao = redacao;
+
+
+        if (arquivo) {
+
+            const leitor =
+                new FileReader();
+
+            leitor.onload = function(e) {
+
+                item.imagem =
+                    e.target.result;
+
+                finalizar();
+            };
+
+            leitor.readAsDataURL(arquivo);
+
+        } else {
+
+            finalizar();
+        }
+
+        return;
+    }
+
+
+    /* NOVO */
+
+    if (!arquivo) {
+
+        alert("Escolha uma imagem.");
+
+        return;
+    }
+
+
+    const leitor =
+        new FileReader();
+
+    leitor.onload = function(e) {
+
+        atualidades.push({
+
+            id: Date.now(),
+
+            titulo: titulo,
+
+            fonte: fonte,
+
+            data: data,
+
+            resumo: resumo,
+
+            opiniao: opiniao,
+
+            redacao: redacao,
+
+            imagem: e.target.result
+
+        });
+
+        finalizar();
+
+    };
+
+    leitor.readAsDataURL(arquivo);
+}
+
+
+/* FINALIZAR */
+
+function finalizar() {
+
+    localStorage.setItem(
+        "atualidadesGoncalvesDias",
+        JSON.stringify(atualidades)
+    );
+
+    fecharModal();
+
+    renderizar();
+}
+
+
+/* RENDERIZAR */
+
+function renderizar() {
+
+    const prateleira =
+        document.getElementById("prateleira");
+
+    prateleira.innerHTML = "";
+
+
+    if (atualidades.length === 0) {
+
+        prateleira.innerHTML = `
+
+            <div class="vazio">
+
+                <div class="vazio-icone">
+                    📰
+                </div>
+
+                <h2>
+                    Sua estante está vazia
+                </h2>
+
+                <p>
+                    Adicione uma atualidade para começar
+                    sua coleção.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    atualidades.forEach(item => {
+
+        let dataFormatada = "";
+
+        if (item.data) {
+
+            const partes =
+                item.data.split("-");
+
+            dataFormatada =
+                `${partes[2]}/${partes[1]}/${partes[0]}`;
+        }
+
+
+        prateleira.innerHTML += `
+
+            <article
+                class="livro"
+                onclick="abrirDetalhes(${item.id})"
+            >
+
+                <div class="livro-capa">
+
+                    <img
+                        class="livro-imagem"
+                        src="${item.imagem}"
+                        alt="${item.titulo}"
+                    >
+
+                    <div class="livro-conteudo">
+
+                        <h2>
+                            ${item.titulo}
+                        </h2>
+
+                        ${
+                            item.fonte
+                            ? `
+                                <p class="fonte">
+                                    Fonte: ${item.fonte}
+                                </p>
+                              `
+                            : ""
+                        }
+
+                        ${
+                            dataFormatada
+                            ? `
+                                <span class="data">
+                                    ${dataFormatada}
+                                </span>
+                              `
+                            : ""
+                        }
+
+                    </div>
+
+                </div>
+
+                <div class="linha-prateleira"></div>
+
+            </article>
+
+        `;
+
+    });
+
+}
+
+
+/* DETALHES */
+
+function abrirDetalhes(id) {
+
+    const item =
+        atualidades.find(
+            a => a.id === id
+        );
+
+    const conteudo =
+        document.getElementById(
+            "conteudoDetalhes"
+        );
+
+
+    let dataFormatada = "";
+
+    if (item.data) {
+
+        const partes =
+            item.data.split("-");
+
+        dataFormatada =
+            `${partes[2]}/${partes[1]}/${partes[0]}`;
+    }
+
+
+    conteudo.innerHTML = `
+
+        <div class="detalhes-topo">
+
+            <img
+                class="detalhes-imagem"
+                src="${item.imagem}"
+                alt="${item.titulo}"
+            >
+
+            <div class="detalhes-info">
+
+                <h2>
+                    ${item.titulo}
+                </h2>
+
+                ${
+                    item.fonte
+                    ? `
+                        <p class="fonte-grande">
+                            Fonte: ${item.fonte}
+                        </p>
+                      `
+                    : ""
+                }
+
+                ${
+                    dataFormatada
+                    ? `
+                        <p class="fonte-grande">
+                            Data: ${dataFormatada}
+                        </p>
+                      `
+                    : ""
+                }
+
+            </div>
+
+        </div>
+
+
+        ${
+            item.resumo
+            ? `
+                <div class="secao">
+
+                    <h3>Resumo</h3>
+
+                    <p>
+                        ${item.resumo}
+                    </p>
+
+                </div>
+              `
+            : ""
+        }
+
+
+        ${
+            item.opiniao
+            ? `
+                <div class="secao">
+
+                    <h3>Minha opinião</h3>
+
+                    <p>
+                        ${item.opiniao}
+                    </p>
+
+                </div>
+              `
+            : ""
+        }
+
+
+        ${
+            item.redacao
+            ? `
+                <div class="secao">
+
+                    <h3>Relação com redação</h3>
+
+                    <p>
+                        ${item.redacao}
+                    </p>
+
+                </div>
+              `
+            : ""
+        }
+
+
+        <div class="botoes-detalhes">
+
+            <button
+                class="fechar"
+                onclick="fecharDetalhes()"
+            >
+                Fechar
+            </button>
+
+            <button
+                class="editar"
+                onclick="editarPeloDetalhe(${item.id})"
+            >
+                Editar
+            </button>
+
+            <button
+                class="excluir"
+                onclick="excluirAtualidade(${item.id})"
+            >
+                Excluir
+            </button>
+
+        </div>
+
+    `;
+
+
+    document
+        .getElementById("detalhes")
+        .classList.add("ativo");
+}
+
+
+/* FECHAR DETALHES */
+
+function fecharDetalhes() {
+
+    document
+        .getElementById("detalhes")
+        .classList.remove("ativo");
+}
+
+
+/* EDITAR */
+
+function editarPeloDetalhe(id) {
+
+    fecharDetalhes();
+
+    abrirModal(id);
+}
+
+
+/* EXCLUIR */
+
+function excluirAtualidade(id) {
+
+    const confirmar =
+        confirm(
+            "Deseja realmente excluir esta atualidade?"
+        );
+
+    if (!confirmar) return;
+
+
+    atualidades =
+        atualidades.filter(
+            item => item.id !== id
+        );
+
+
+    localStorage.setItem(
+        "atualidadesGoncalvesDias",
+        JSON.stringify(atualidades)
+    );
+
+
+    fecharDetalhes();
+
+    renderizar();
+}
+
+
+/* INICIAR */
+
+renderizar();
+
+</script>
+
+</body>
+</html>

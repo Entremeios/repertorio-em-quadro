@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Diário de Leitura | Biblioteca Virtual Gonçalves Dias</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #eee9dd;
+    color: #26352b;
+    font-family: 'Inter', sans-serif;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header {
+    height: 76px;
+    background: #304b38;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    line-height: 1.1;
+}
+
+.logo-text small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 3px;
+}
+
+.voltar {
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.5);
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* =========================
+   INTRODUÇÃO
+========================= */
+
+.introducao {
+    max-width: 1100px;
+    margin: auto;
+    padding: 55px 20px 30px;
+}
+
+.etiqueta {
+    display: inline-block;
+    background: #dce4da;
+    color: #304b38;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.introducao h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 68px);
+    line-height: 1;
+}
+
+.introducao p {
+    max-width: 680px;
+    margin-top: 15px;
+    color: #69736c;
+    line-height: 1.6;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+
+.acoes {
+    max-width: 1100px;
+    margin: 0 auto 35px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-adicionar {
+    border: none;
+    background: #304b38;
+    color: white;
+    padding: 13px 23px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-adicionar:hover {
+    background: #203728;
+}
+
+/* =========================
+   ARQUIVO DE LIVROS
+========================= */
+
+.arquivo {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding-bottom: 80px;
+}
+
+.lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 25px;
+}
+
+/* =========================
+   DOSSIÊ / PASTA
+========================= */
+
+.dossie-card {
+    background: #f9f6ee;
+    border: 1px solid #d4d0c5;
+    box-shadow: 4px 6px 15px rgba(0,0,0,.08);
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.dossie-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 7px 12px 20px rgba(0,0,0,.13);
+}
+
+.pasta {
+    height: 42px;
+    background: #cfd8cb;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    color: #304b38;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.dossie-corpo {
+    padding: 20px;
+}
+
+.capa-mini {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid #d0cbc0;
+    margin-bottom: 18px;
+}
+
+.dossie-corpo h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    line-height: 1.2;
+}
+
+.autor {
+    margin-top: 7px;
+    color: #68736b;
+    font-size: 13px;
+}
+
+.status {
+    display: inline-block;
+    margin-top: 15px;
+    background: #e4eadf;
+    color: #304b38;
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* =========================
+   VAZIO
+========================= */
+
+.vazio {
+    border: 1px dashed #aeb7ae;
+    background: rgba(255,255,255,.3);
+    border-radius: 12px;
+    text-align: center;
+    padding: 90px 20px;
+    color: #737d75;
+}
+
+.vazio .icone {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.vazio h2 {
+    font-family: 'Playfair Display', serif;
+    color: #304b38;
+    margin-bottom: 8px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,25,18,.78);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.formulario {
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #f8f5ed;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.formulario h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.campo {
+    margin-bottom: 17px;
+}
+
+.campo label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.campo input,
+.campo textarea,
+.campo select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #b9c0b9;
+    border-radius: 7px;
+    background: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.campo textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.duas-colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.botoes button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.cancelar {
+    background: transparent;
+    border: 1px solid #304b38;
+    color: #304b38;
+}
+
+.salvar {
+    background: #304b38;
+    color: white;
+    border: none;
+}
+
+/* =========================
+   DOSSIÊ ABERTO
+========================= */
+
+.visualizador {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,25,18,.82);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 200;
+}
+
+.visualizador.ativo {
+    display: flex;
+}
+
+.dossie-aberto {
+    width: 100%;
+    max-width: 950px;
+    max-height: 92vh;
+    overflow-y: auto;
+    background: #f8f5ed;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+
+/* CABEÇALHO DO DOSSIÊ */
+
+.dossie-header {
+    background: #304b38;
+    color: white;
+    padding: 25px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.codigo {
+    font-size: 10px;
+    letter-spacing: 2px;
+    opacity: .8;
+}
+
+.dossie-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    margin-top: 5px;
+}
+
+.fechar-x {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* CONTEÚDO */
+
+.dossie-conteudo {
+    padding: 38px;
+}
+
+.identificacao {
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    gap: 35px;
+    padding-bottom: 35px;
+    border-bottom: 1px solid #d5d0c4;
+}
+
+.capa-grande {
+    width: 270px;
+    height: 360px;
+    object-fit: cover;
+    border: 1px solid #ccc5b8;
+    box-shadow: 5px 7px 12px rgba(0,0,0,.12);
+}
+
+.identificacao-info h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    line-height: 1.1;
+}
+
+.identificacao-info h3 {
+    color: #68736b;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.meta {
+    margin-top: 25px;
+    display: grid;
+    gap: 12px;
+}
+
+.meta-item {
+    padding: 11px 14px;
+    background: #ebe7dc;
+    border-left: 3px solid #304b38;
+}
+
+.meta-item span {
+    display: block;
+    color: #7a817a;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.meta-item strong {
+    display: block;
+    margin-top: 3px;
+    font-size: 13px;
+}
+
+/* SEÇÕES DO DOSSIÊ */
+
+.secao {
+    padding: 28px 0;
+    border-bottom: 1px solid #d5d0c4;
+}
+
+.secao:last-of-type {
+    border-bottom: none;
+}
+
+.secao h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    color: #304b38;
+    margin-bottom: 10px;
+}
+
+.secao p {
+    color: #4e5951;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+/* NOTAS */
+
+.notas {
+    background: #e9e4d7;
+    padding: 25px;
+    margin-top: 28px;
+    border-left: 5px solid #304b38;
+}
+
+.notas h3 {
+    margin-bottom: 10px;
+}
+
+/* BOTÕES FINAIS */
+
+.botoes-dossie {
+    display: flex;
+    gap: 10px;
+    padding-top: 25px;
+}
+
+.botoes-dossie button {
+    padding: 11px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.editar {
+    background: #304b38;
+    color: white;
+    border: none;
+}
+
+.excluir {
+    background: #222;
+    color: white;
+    border: none;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:700px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .acoes {
+        justify-content: center;
+    }
+
+    .btn-adicionar {
+        width: 100%;
+    }
+
+    .duas-colunas {
+        grid-template-columns: 1fr;
+    }
+
+    .identificacao {
+        grid-template-columns: 1fr;
+    }
+
+    .capa-grande {
+        width: 100%;
+        height: 350px;
+    }
+
+    .identificacao-info h1 {
+        font-size: 32px;
+    }
+
+    .dossie-conteudo {
+        padding: 25px;
+    }
+
+    .dossie-header {
+        padding: 20px;
+    }
+
+    .botoes-dossie {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     CABEÇALHO
+========================= -->
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">📖</div>
+
+        <div class="logo-text">
+            Biblioteca Virtual
+            <small>GONÇALVES DIAS</small>
+        </div>
+
+    </div>
+
+    <a href="../estante.html" class="voltar">
+        ← Estante
+    </a>
+
+</header>
+
+
+<!-- =========================
+     INTRODUÇÃO
+========================= -->
+
+<section class="introducao">
+
+    <span class="etiqueta">
+        Arquivo pessoal
+    </span>
+
+    <h1>
+        Diário de Leitura
+    </h1>
+
+    <p>
+        Um espaço para registrar não apenas os livros que você leu,
+        mas também aquilo que cada obra despertou em você.
+        Cada livro possui seu próprio dossiê.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     BOTÃO
+========================= -->
+
+<div class="acoes">
+
+    <button
+        class="btn-adicionar"
+        onclick="abrirModal()"
+    >
+        + Adicionar livro
+    </button>
+
+</div>
+
+
+<!-- =========================
+     LISTA
+========================= -->
+
+<section class="arquivo">
+
+    <div id="lista" class="lista"></div>
+
+</section>
+
+
+<!-- =========================
+     MODAL DE CADASTRO
+========================= -->
+
+<div id="modal" class="modal">
+
+    <div class="formulario">
+
+        <h2 id="tituloModal">
+            Novo dossiê
+        </h2>
+
+
+        <div class="campo">
+
+            <label>
+                Capa do livro
+            </label>
+
+            <input
+                id="imagem"
+                type="file"
+                accept="image/*"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Título do livro
+            </label>
+
+            <input
+                id="titulo"
+                type="text"
+                placeholder="Digite o título"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Autor
+            </label>
+
+            <input
+                id="autor"
+                type="text"
+                placeholder="Nome do autor"
+            >
+
+        </div>
+
+
+        <div class="duas-colunas">
+
+            <div class="campo">
+
+                <label>
+                    Comecei a ler
+                </label>
+
+                <input
+                    id="inicio"
+                    type="date"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label>
+                    Terminei
+                </label>
+
+                <input
+                    id="fim"
+                    type="date"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Status da leitura
+            </label>
+
+            <select id="status">
+
+                <option value="Quero ler">
+                    Quero ler
+                </option>
+
+                <option value="Lendo">
+                    Lendo
+                </option>
+
+                <option value="Concluído">
+                    Concluído
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Minha avaliação
+            </label>
+
+            <select id="avaliacao">
+
+                <option value="">
+                    Escolha uma avaliação
+                </option>
+
+                <option value="★★★★★">
+                    ★★★★★
+                </option>
+
+                <option value="★★★★☆">
+                    ★★★★☆
+                </option>
+
+                <option value="★★★☆☆">
+                    ★★★☆☆
+                </option>
+
+                <option value="★★☆☆☆">
+                    ★★☆☆☆
+                </option>
+
+                <option value="★☆☆☆☆">
+                    ★☆☆☆☆
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Sinopse
+            </label>
+
+            <textarea
+                id="sinopse"
+                placeholder="Sobre o que é o livro?"
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                O que achei
+            </label>
+
+            <textarea
+                id="opiniao"
+                placeholder="Conte sua experiência com a leitura..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Análise da obra
+            </label>
+
+            <textarea
+                id="analise"
+                placeholder="Personagens, narrativa, linguagem, contexto..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                O que essa obra me fez refletir?
+            </label>
+
+            <textarea
+                id="reflexao"
+                placeholder="Questões, pensamentos e reflexões..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Temas abordados
+            </label>
+
+            <textarea
+                id="temas"
+                placeholder="Ex.: desigualdade, liberdade, identidade..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Como posso usar na redação?
+            </label>
+
+            <textarea
+                id="redacao"
+                placeholder="Repertório, argumentos, temas possíveis..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Frases ou trechos importantes
+            </label>
+
+            <textarea
+                id="frases"
+                placeholder="Registre aqui suas referências e anotações..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Anotações pessoais
+            </label>
+
+            <textarea
+                id="anotacoes"
+                placeholder="Outras observações..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="botoes">
+
+            <button
+                class="cancelar"
+                onclick="fecharModal()"
+            >
+                Cancelar
+            </button>
+
+            <button
+                class="salvar"
+                onclick="salvarLivro()"
+            >
+                Salvar dossiê
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     VISUALIZADOR DO DOSSIÊ
+========================= -->
+
+<div id="visualizador" class="visualizador">
+
+    <div
+        id="dossieAberto"
+        class="dossie-aberto"
+    ></div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   DADOS
+========================= */
+
+let livros =
+    JSON.parse(
+        localStorage.getItem("diarioLeituraGoncalvesDias")
+    ) || [];
+
+let editando = null;
+
+
+/* =========================
+   MODAL
+========================= */
+
+function abrirModal(id = null) {
+
+    editando = id;
+
+    document
+        .getElementById("modal")
+        .classList.add("ativo");
+
+
+    if (id !== null) {
+
+        const livro =
+            livros.find(
+                item => item.id === id
+            );
+
+        document.getElementById("tituloModal")
+            .textContent = "Editar dossiê";
+
+        document.getElementById("titulo").value =
+            livro.titulo;
+
+        document.getElementById("autor").value =
+            livro.autor;
+
+        document.getElementById("inicio").value =
+            livro.inicio;
+
+        document.getElementById("fim").value =
+            livro.fim;
+
+        document.getElementById("status").value =
+            livro.status;
+
+        document.getElementById("avaliacao").value =
+            livro.avaliacao;
+
+        document.getElementById("sinopse").value =
+            livro.sinopse;
+
+        document.getElementById("opiniao").value =
+            livro.opiniao;
+
+        document.getElementById("analise").value =
+            livro.analise;
+
+        document.getElementById("reflexao").value =
+            livro.reflexao;
+
+        document.getElementById("temas").value =
+            livro.temas;
+
+        document.getElementById("redacao").value =
+            livro.redacao;
+
+        document.getElementById("frases").value =
+            livro.frases;
+
+        document.getElementById("anotacoes").value =
+            livro.anotacoes;
+
+    } else {
+
+        document.getElementById("tituloModal")
+            .textContent = "Novo dossiê";
+
+        limparFormulario();
+
+    }
+}
+
+
+/* =========================
+   FECHAR MODAL
+========================= */
+
+function fecharModal() {
+
+    document
+        .getElementById("modal")
+        .classList.remove("ativo");
+
+    limparFormulario();
+
+    editando = null;
+}
+
+
+/* =========================
+   LIMPAR FORMULÁRIO
+========================= */
+
+function limparFormulario() {
+
+    document.getElementById("imagem").value = "";
+    document.getElementById("titulo").value = "";
+    document.getElementById("autor").value = "";
+    document.getElementById("inicio").value = "";
+    document.getElementById("fim").value = "";
+    document.getElementById("status").value = "Quero ler";
+    document.getElementById("avaliacao").value = "";
+    document.getElementById("sinopse").value = "";
+    document.getElementById("opiniao").value = "";
+    document.getElementById("analise").value = "";
+    document.getElementById("reflexao").value = "";
+    document.getElementById("temas").value = "";
+    document.getElementById("redacao").value = "";
+    document.getElementById("frases").value = "";
+    document.getElementById("anotacoes").value = "";
+
+}
+
+
+/* =========================
+   SALVAR LIVRO
+========================= */
+
+function salvarLivro() {
+
+    const titulo =
+        document.getElementById("titulo")
+        .value.trim();
+
+    const autor =
+        document.getElementById("autor")
+        .value.trim();
+
+    const inicio =
+        document.getElementById("inicio").value;
+
+    const fim =
+        document.getElementById("fim").value;
+
+    const status =
+        document.getElementById("status").value;
+
+    const avaliacao =
+        document.getElementById("avaliacao").value;
+
+    const sinopse =
+        document.getElementById("sinopse")
+        .value.trim();
+
+    const opiniao =
+        document.getElementById("opiniao")
+        .value.trim();
+
+    const analise =
+        document.getElementById("analise")
+        .value.trim();
+
+    const reflexao =
+        document.getElementById("reflexao")
+        .value.trim();
+
+    const temas =
+        document.getElementById("temas")
+        .value.trim();
+
+    const redacao =
+        document.getElementById("redacao")
+        .value.trim();
+
+    const frases =
+        document.getElementById("frases")
+        .value.trim();
+
+    const anotacoes =
+        document.getElementById("anotacoes")
+        .value.trim();
+
+    const arquivo =
+        document.getElementById("imagem")
+        .files[0];
+
+
+    if (!titulo) {
+
+        alert("Digite o título do livro.");
+
+        return;
+    }
+
+
+    /* =====================
+       EDITAR
+    ===================== */
+
+    if (editando !== null) {
+
+        const livro =
+            livros.find(
+                item => item.id === editando
+            );
+
+        livro.titulo = titulo;
+        livro.autor = autor;
+        livro.inicio = inicio;
+        livro.fim = fim;
+        livro.status = status;
+        livro.avaliacao = avaliacao;
+        livro.sinopse = sinopse;
+        livro.opiniao = opiniao;
+        livro.analise = analise;
+        livro.reflexao = reflexao;
+        livro.temas = temas;
+        livro.redacao = redacao;
+        livro.frases = frases;
+        livro.anotacoes = anotacoes;
+
+
+        if (arquivo) {
+
+            const leitor =
+                new FileReader();
+
+            leitor.onload = function(e) {
+
+                livro.imagem =
+                    e.target.result;
+
+                finalizar();
+
+            };
+
+            leitor.readAsDataURL(arquivo);
+
+        } else {
+
+            finalizar();
+
+        }
+
+        return;
+    }
+
+
+    /* =====================
+       NOVO
+    ===================== */
+
+    if (!arquivo) {
+
+        alert("Escolha a capa do livro.");
+
+        return;
+    }
+
+
+    const leitor =
+        new FileReader();
+
+
+    leitor.onload = function(e) {
+
+        livros.push({
+
+            id: Date.now(),
+
+            imagem: e.target.result,
+
+            titulo: titulo,
+
+            autor: autor,
+
+            inicio: inicio,
+
+            fim: fim,
+
+            status: status,
+
+            avaliacao: avaliacao,
+
+            sinopse: sinopse,
+
+            opiniao: opiniao,
+
+            analise: analise,
+
+            reflexao: reflexao,
+
+            temas: temas,
+
+            redacao: redacao,
+
+            frases: frases,
+
+            anotacoes: anotacoes
+
+        });
+
+
+        finalizar();
+
+    };
+
+
+    leitor.readAsDataURL(arquivo);
+
+}
+
+
+/* =========================
+   FINALIZAR
+========================= */
+
+function finalizar() {
+
+    localStorage.setItem(
+        "diarioLeituraGoncalvesDias",
+        JSON.stringify(livros)
+    );
+
+    fecharModal();
+
+    renderizar();
+
+}
+
+
+/* =========================
+   RENDERIZAR
+========================= */
+
+function renderizar() {
+
+    const lista =
+        document.getElementById("lista");
+
+    lista.innerHTML = "";
+
+
+    if (livros.length === 0) {
+
+        lista.innerHTML = `
+
+            <div class="vazio">
+
+                <div class="icone">
+                    📂
+                </div>
+
+                <h2>
+                    Nenhum dossiê ainda
+                </h2>
+
+                <p>
+                    Adicione seu primeiro livro
+                    ao Diário de Leitura.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    livros.forEach((livro, indice) => {
+
+        lista.innerHTML += `
+
+            <article
+                class="dossie-card"
+                onclick="abrirDossie(${livro.id})"
+            >
+
+                <div class="pasta">
+
+                    Dossiê Nº
+                    ${String(indice + 1).padStart(3, "0")}
+
+                </div>
+
+
+                <div class="dossie-corpo">
+
+                    <img
+                        class="capa-mini"
+                        src="${livro.imagem}"
+                        alt="Capa de ${livro.titulo}"
+                    >
+
+
+                    <h2>
+                        ${livro.titulo}
+                    </h2>
+
+
+                    ${
+                        livro.autor
+                        ? `
+                            <p class="autor">
+                                ${livro.autor}
+                            </p>
+                          `
+                        : ""
+                    }
+
+
+                    <span class="status">
+                        ${livro.status}
+                    </span>
+
+                </div>
+
+            </article>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================
+   ABRIR DOSSIÊ
+========================= */
+
+function abrirDossie(id) {
+
+    const livro =
+        livros.find(
+            item => item.id === id
+        );
+
+    const visualizador =
+        document.getElementById(
+            "visualizador"
+        );
+
+    const dossie =
+        document.getElementById(
+            "dossieAberto"
+        );
+
+
+    let inicio = formatarData(livro.inicio);
+    let fim = formatarData(livro.fim);
+
+
+    dossie.innerHTML = `
+
+        <div class="dossie-header">
+
+            <div>
+
+                <div class="codigo">
+                    ARQUIVO DE LEITURA
+                </div>
+
+                <h2>
+                    ${livro.titulo}
+                </h2>
+
+            </div>
+
+
+            <button
+                class="fechar-x"
+                onclick="fecharDossie()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="dossie-conteudo">
+
+
+            <!-- IDENTIFICAÇÃO -->
+
+            <div class="identificacao">
+
+                <img
+                    class="capa-grande"
+                    src="${livro.imagem}"
+                    alt="Capa de ${livro.titulo}"
+                >
+
+
+                <div class="identificacao-info">
+
+                    <h1>
+                        ${livro.titulo}
+                    </h1>
+
+
+                    ${
+                        livro.autor
+                        ? `
+                            <h3>
+                                ${livro.autor}
+                            </h3>
+                          `
+                        : ""
+                    }
+
+
+                    <div class="meta">
+
+                        <div class="meta-item">
+
+                            <span>
+                                Status
+                            </span>
+
+                            <strong>
+                                ${livro.status}
+                            </strong>
+
+                        </div>
+
+
+                        ${
+                            livro.avaliacao
+                            ? `
+                                <div class="meta-item">
+
+                                    <span>
+                                        Avaliação
+                                    </span>
+
+                                    <strong>
+                                        ${livro.avaliacao}
+                                    </strong>
+
+                                </div>
+                              `
+                            : ""
+                        }
+
+
+                        ${
+                            inicio
+                            ? `
+                                <div class="meta-item">
+
+                                    <span>
+                                        Início da leitura
+                                    </span>
+
+                                    <strong>
+                                        ${inicio}
+                                    </strong>
+
+                                </div>
+                              `
+                            : ""
+                        }
+
+
+                        ${
+                            fim
+                            ? `
+                                <div class="meta-item">
+
+                                    <span>
+                                        Término da leitura
+                                    </span>
+
+                                    <strong>
+                                        ${fim}
+                                    </strong>
+
+                                </div>
+                              `
+                            : ""
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            ${criarSecao("Sinopse", livro.sinopse)}
+
+            ${criarSecao("O que achei", livro.opiniao)}
+
+            ${criarSecao("Análise da obra", livro.analise)}
+
+            ${criarSecao(
+                "O que essa obra me fez refletir?",
+                livro.reflexao
+            )}
+
+            ${criarSecao("Temas abordados", livro.temas)}
+
+            ${criarSecao(
+                "Como posso usar na redação?",
+                livro.redacao
+            )}
+
+            ${
+                livro.frases
+                ? `
+                    <div class="notas">
+
+                        <h3>
+                            💬 Frases ou referências importantes
+                        </h3>
+
+                        <p>
+                            ${livro.frases}
+                        </p>
+
+                    </div>
+                  `
+                : ""
+            }
+
+
+            ${
+                livro.anotacoes
+                ? `
+                    <div class="notas">
+
+                        <h3>
+                            📌 Anotações pessoais
+                        </h3>
+
+                        <p>
+                            ${livro.anotacoes}
+                        </p>
+
+                    </div>
+                  `
+                : ""
+            }
+
+
+            <div class="botoes-dossie">
+
+                <button
+                    class="editar"
+                    onclick="editarDossie(${livro.id})"
+                >
+                    Editar dossiê
+                </button>
+
+
+                <button
+                    class="excluir"
+                    onclick="excluirLivro(${livro.id})"
+                >
+                    Excluir
+                </button>
+
+            </div>
+
+
+        </div>
+
+    `;
+
+
+    visualizador.classList.add("ativo");
+}
+
+
+/* =========================
+   CRIAR SEÇÃO
+========================= */
+
+function criarSecao(titulo, texto) {
+
+    if (!texto) {
+        return "";
+    }
+
+
+    return `
+
+        <section class="secao">
+
+            <h3>
+                ${titulo}
+            </h3>
+
+            <p>
+                ${texto}
+            </p>
+
+        </section>
+
+    `;
+
+}
+
+
+/* =========================
+   FORMATAR DATA
+========================= */
+
+function formatarData(data) {
+
+    if (!data) {
+        return "";
+    }
+
+    const partes =
+        data.split("-");
+
+    return `${partes[2]}/${partes[1]}/${partes[0]}`;
+
+}
+
+
+/* =========================
+   FECHAR DOSSIÊ
+========================= */
+
+function fecharDossie() {
+
+    document
+        .getElementById("visualizador")
+        .classList.remove("ativo");
+
+}
+
+
+/* =========================
+   EDITAR
+========================= */
+
+function editarDossie(id) {
+
+    fecharDossie();
+
+    abrirModal(id);
+
+}
+
+
+/* =========================
+   EXCLUIR
+========================= */
+
+function excluirLivro(id) {
+
+    const confirmar =
+        confirm(
+            "Deseja realmente excluir este dossiê?"
+        );
+
+
+    if (!confirmar) {
+        return;
+    }
+
+
+    livros =
+        livros.filter(
+            livro => livro.id !== id
+        );
+
+
+    localStorage.setItem(
+        "diarioLeituraGoncalvesDias",
+        JSON.stringify(livros)
+    );
+
+
+    fecharDossie();
+
+    renderizar();
+
+}
+
+
+/* =========================
+   INICIAR
+========================= */
+
+renderizar();
+
+</script>
+
+</body>
+</html>

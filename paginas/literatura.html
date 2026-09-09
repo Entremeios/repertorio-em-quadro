@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -76,7 +75,7 @@ header a {
     line-height: 1.7;
 }
 
-/* BOTÃO ADICIONAR */
+/* BOTÃO */
 
 .area-adicionar {
     text-align: center;
@@ -121,16 +120,12 @@ header a {
     box-shadow: 0 15px 0 #3c2c21;
 }
 
-/* ÁREA DOS LIVROS */
-
 .estante-livros {
-
     min-height: 300px;
 
     display: flex;
 
     align-items: flex-end;
-
     justify-content: flex-start;
 
     gap: 14px;
@@ -140,13 +135,11 @@ header a {
     padding: 0 15px 0;
 
     border-bottom: 18px solid #3c2c21;
-
 }
 
-/* MENSAGEM ESTANTE VAZIA */
+/* VAZIA */
 
 .vazia {
-
     width: 100%;
 
     min-height: 280px;
@@ -154,7 +147,6 @@ header a {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -164,23 +156,18 @@ header a {
     font-family: Arial, sans-serif;
 
     font-size: 16px;
-
 }
 
 /* LIVRO */
 
 .livro {
-
     width: 100px;
-
     min-height: 230px;
 
     padding: 15px 10px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -196,49 +183,34 @@ header a {
     transition: .3s;
 
     position: relative;
-
 }
 
 .livro:hover {
-
     transform: translateY(-15px) rotate(-2deg);
-
     box-shadow: 7px 7px 12px rgba(0,0,0,.25);
-
 }
 
 .livro-conteudo {
-
     writing-mode: vertical-rl;
-
     transform: rotate(180deg);
-
 }
 
 .livro-titulo {
-
     font-size: 17px;
-
     margin-bottom: 12px;
-
 }
 
 .livro-autor {
-
     font-family: Arial, sans-serif;
-
     font-size: 11px;
-
 }
 
 /* MODAL */
 
 .modal {
-
     display: none;
 
     position: fixed;
-
     inset: 0;
 
     background: rgba(0,0,0,.55);
@@ -246,11 +218,9 @@ header a {
     z-index: 10;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 20px;
-
 }
 
 .modal.ativo {
@@ -258,9 +228,7 @@ header a {
 }
 
 .caixa-modal {
-
     width: 450px;
-
     max-width: 100%;
 
     background: #f7f5ed;
@@ -268,27 +236,21 @@ header a {
     padding: 35px;
 
     box-shadow: 10px 10px 0 rgba(0,0,0,.2);
-
 }
 
 .caixa-modal h2 {
-
     font-size: 30px;
 
     font-weight: normal;
 
     margin-bottom: 25px;
-
 }
 
 .campo {
-
     margin-bottom: 18px;
-
 }
 
 .campo label {
-
     display: block;
 
     font-family: Arial, sans-serif;
@@ -296,12 +258,10 @@ header a {
     font-size: 13px;
 
     margin-bottom: 7px;
-
 }
 
 .campo input,
 .campo select {
-
     width: 100%;
 
     padding: 13px;
@@ -311,21 +271,17 @@ header a {
     background: white;
 
     font-family: Arial, sans-serif;
-
 }
 
 .botoes {
-
     display: flex;
 
     gap: 10px;
 
     margin-top: 25px;
-
 }
 
 .botoes button {
-
     flex: 1;
 
     padding: 13px;
@@ -335,31 +291,22 @@ header a {
     cursor: pointer;
 
     font-weight: bold;
-
 }
 
 .salvar {
-
     background: #536b4d;
-
     color: white;
-
 }
 
 .cancelar {
-
     background: #ddd8ca;
-
     color: #333;
-
 }
 
-/* DETALHES DO LIVRO */
+/* DETALHES */
 
 .detalhes {
-
     width: 92%;
-
     max-width: 900px;
 
     margin: 0 auto 70px;
@@ -369,47 +316,37 @@ header a {
     padding: 35px;
 
     display: none;
-
 }
 
 .detalhes.ativo {
-
     display: block;
-
 }
 
 .detalhes h2 {
-
     font-size: 30px;
 
     font-weight: normal;
 
     margin-bottom: 10px;
-
 }
 
 .detalhes p {
-
     font-family: Arial, sans-serif;
 
     color: #666;
 
     line-height: 1.7;
-
 }
 
 .acoes-livro {
-
     margin-top: 20px;
 
     display: flex;
 
     gap: 10px;
-
 }
 
 .acoes-livro button {
-
     border: none;
 
     padding: 10px 18px;
@@ -417,21 +354,31 @@ header a {
     cursor: pointer;
 
     font-weight: bold;
-
 }
 
 .excluir {
-
     background: #8b4c42;
-
     color: white;
+}
 
+/* CARREGANDO */
+
+.carregando {
+    width: 100%;
+    min-height: 280px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #e9dfce;
+
+    font-family: Arial, sans-serif;
 }
 
 /* RODAPÉ */
 
 footer {
-
     text-align: center;
 
     padding: 30px;
@@ -441,16 +388,38 @@ footer {
     font-family: Arial, sans-serif;
 
     font-size: 13px;
+}
+
+@media (max-width: 600px) {
+
+    .introducao h1 {
+        font-size: 42px;
+    }
+
+    .biblioteca {
+        width: 95%;
+        padding: 25px 15px 0;
+    }
+
+    header {
+        padding: 0 4%;
+    }
+
+    header strong {
+        font-size: 14px;
+    }
 
 }
 
 </style>
 
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase.js"></script>
+
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -486,21 +455,21 @@ autores e obras que você deseja guardar.
 <div class="area-adicionar">
 
 <button class="btn-adicionar" onclick="abrirModal()">
-
 + Adicionar livro
-
 </button>
 
 </div>
 
 
-<!-- ESTANTE -->
-
 <main class="biblioteca">
 
 <div id="estanteLivros" class="estante-livros">
 
-<div class="vazia" id="mensagemVazia">
+<div class="carregando" id="carregando">
+Carregando sua biblioteca...
+</div>
+
+<div class="vazia" id="mensagemVazia" style="display:none;">
 
 <p>
 Sua estante ainda está vazia.<br>
@@ -546,7 +515,6 @@ Adicionar livro
 </h2>
 
 <form id="formLivro">
-
 
 <div class="campo">
 
@@ -637,22 +605,19 @@ value="#536b4d"
 <button
 type="button"
 class="cancelar"
-onclick="fecharModal()">
-
+onclick="fecharModal()"
+>
 Cancelar
-
 </button>
 
 <button
 type="submit"
-class="salvar">
-
+class="salvar"
+>
 Adicionar
-
 </button>
 
 </div>
-
 
 </form>
 
@@ -670,16 +635,18 @@ Biblioteca Virtual Gonçalves Dias
 
 <script>
 
-/* LISTA DE LIVROS */
+/* =========================
+   VARIÁVEIS
+========================= */
 
-let livros = JSON.parse(
-    localStorage.getItem("bibliotecaLiteratura")
-) || [];
+let livros = [];
 
 let livroSelecionado = null;
 
 
-/* ABRIR MODAL */
+/* =========================
+   ABRIR MODAL
+========================= */
 
 function abrirModal() {
 
@@ -690,7 +657,9 @@ function abrirModal() {
 }
 
 
-/* FECHAR MODAL */
+/* =========================
+   FECHAR MODAL
+========================= */
 
 function fecharModal() {
 
@@ -705,19 +674,65 @@ function fecharModal() {
 }
 
 
-/* ADICIONAR LIVRO */
+/* =========================
+   CARREGAR LIVROS
+========================= */
+
+async function carregarLivros() {
+
+    const carregando =
+        document.getElementById("carregando");
+
+    const mensagem =
+        document.getElementById("mensagemVazia");
+
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("livros")
+                .select("*")
+                .order("criado_em", {
+                    ascending: true
+                });
+
+        if (error) {
+            throw error;
+        }
+
+        livros = data || [];
+
+        carregando.style.display = "none";
+
+        mostrarLivros();
+
+    } catch (erro) {
+
+        console.error("Erro ao carregar livros:", erro);
+
+        carregando.innerHTML =
+            "Não foi possível carregar a biblioteca.";
+
+    }
+
+}
+
+
+/* =========================
+   ADICIONAR LIVRO
+========================= */
 
 document
 .getElementById("formLivro")
-.addEventListener("submit", function(event) {
+.addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
     const titulo =
-        document.getElementById("titulo").value;
+        document.getElementById("titulo").value.trim();
 
     const autor =
-        document.getElementById("autor").value;
+        document.getElementById("autor").value.trim();
 
     const categoria =
         document.getElementById("categoria").value;
@@ -726,46 +741,72 @@ document
         document.getElementById("cor").value;
 
 
-    const novoLivro = {
+    const botao =
+        document.querySelector(".salvar");
 
-        id: Date.now(),
-
-        titulo: titulo,
-
-        autor: autor,
-
-        categoria: categoria,
-
-        cor: cor
-
-    };
+    botao.disabled = true;
+    botao.textContent = "Salvando...";
 
 
-    livros.push(novoLivro);
+    try {
+
+        const { data, error } =
+            await supabaseClient
+                .from("livros")
+                .insert([
+                    {
+                        titulo: titulo,
+                        autor: autor,
+                        categoria: categoria,
+
+                        /*
+                        A coluna "capa" está sendo usada
+                        temporariamente para guardar
+                        a cor da capa.
+                        */
+                        capa: cor,
+
+                        status: "Quero ler"
+                    }
+                ])
+                .select()
+                .single();
 
 
-    salvarLivros();
+        if (error) {
+            throw error;
+        }
 
-    fecharModal();
 
-    mostrarLivros();
+        livros.push(data);
+
+        fecharModal();
+
+        mostrarLivros();
+
+
+    } catch (erro) {
+
+        console.error("Erro ao adicionar:", erro);
+
+        alert(
+            "Não foi possível adicionar o livro.\n\n" +
+            erro.message
+        );
+
+    } finally {
+
+        botao.disabled = false;
+        botao.textContent = "Adicionar";
+
+    }
 
 });
 
 
-/* SALVAR */
-
-function salvarLivros() {
-
-    localStorage.setItem(
-        "bibliotecaLiteratura",
-        JSON.stringify(livros)
-    );
-
-}
-
-
-/* MOSTRAR LIVROS */
+/* =========================
+   MOSTRAR LIVROS
+========================= */
 
 function mostrarLivros() {
 
@@ -795,7 +836,6 @@ function mostrarLivros() {
 
     livros.forEach(function(livro) {
 
-
         const elemento =
             document.createElement("div");
 
@@ -803,8 +843,13 @@ function mostrarLivros() {
         elemento.className = "livro";
 
 
+        /*
+        A cor vem do campo "capa"
+        do Supabase.
+        */
+
         elemento.style.background =
-            livro.cor;
+            livro.capa || "#536b4d";
 
 
         elemento.innerHTML = `
@@ -816,7 +861,7 @@ function mostrarLivros() {
                 </div>
 
                 <div class="livro-autor">
-                    ${escaparHTML(livro.autor)}
+                    ${escaparHTML(livro.autor || "")}
                 </div>
 
             </div>
@@ -838,7 +883,9 @@ function mostrarLivros() {
 }
 
 
-/* DETALHES */
+/* =========================
+   DETALHES
+========================= */
 
 function mostrarDetalhes(id) {
 
@@ -854,19 +901,22 @@ function mostrarDetalhes(id) {
 
     document
         .getElementById("detalheTitulo")
-        .textContent = livro.titulo;
+        .textContent =
+        livro.titulo;
 
 
     document
         .getElementById("detalheAutor")
         .textContent =
-        "Autor: " + livro.autor;
+        "Autor: " +
+        (livro.autor || "Não informado");
 
 
     document
         .getElementById("detalheCategoria")
         .textContent =
-        "Categoria: " + livro.categoria;
+        "Categoria: " +
+        (livro.categoria || "Não informada");
 
 
     document
@@ -877,9 +927,9 @@ function mostrarDetalhes(id) {
     window.scrollTo({
 
         top:
-        document
-        .getElementById("detalhes")
-        .offsetTop - 30,
+            document
+                .getElementById("detalhes")
+                .offsetTop - 30,
 
         behavior: "smooth"
 
@@ -888,56 +938,92 @@ function mostrarDetalhes(id) {
 }
 
 
-/* EXCLUIR */
+/* =========================
+   EXCLUIR LIVRO
+========================= */
 
-function excluirLivro() {
+async function excluirLivro() {
 
     if (livroSelecionado === null) return;
 
 
-    livros =
-        livros.filter(
-            livro =>
-            livro.id !== livroSelecionado
+    const confirmar =
+        confirm("Deseja realmente excluir este livro?");
+
+
+    if (!confirmar) return;
+
+
+    try {
+
+        const { error } =
+            await supabaseClient
+                .from("livros")
+                .delete()
+                .eq("id", livroSelecionado);
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        livros =
+            livros.filter(
+                livro =>
+                livro.id !== livroSelecionado
+            );
+
+
+        livroSelecionado = null;
+
+
+        document
+            .getElementById("detalhes")
+            .classList.remove("ativo");
+
+
+        mostrarLivros();
+
+
+    } catch (erro) {
+
+        console.error("Erro ao excluir:", erro);
+
+        alert(
+            "Não foi possível excluir o livro.\n\n" +
+            erro.message
         );
 
-
-    salvarLivros();
-
-    livroSelecionado = null;
-
-
-    document
-        .getElementById("detalhes")
-        .classList.remove("ativo");
-
-
-    mostrarLivros();
+    }
 
 }
 
 
-/* SEGURANÇA DO TEXTO */
+/* =========================
+   SEGURANÇA
+========================= */
 
 function escaparHTML(texto) {
 
     const div =
         document.createElement("div");
 
-    div.textContent = texto;
+    div.textContent =
+        texto || "";
 
     return div.innerHTML;
 
 }
 
 
-/* INICIAR */
+/* =========================
+   INICIAR
+========================= */
 
-mostrarLivros();
+carregarLivros();
 
 </script>
 
-
 </body>
-
 </html>

@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -75,7 +76,7 @@ header a {
     line-height: 1.7;
 }
 
-/* BOTÃO */
+/* BOTÃO ADICIONAR */
 
 .area-adicionar {
     text-align: center;
@@ -120,12 +121,16 @@ header a {
     box-shadow: 0 15px 0 #3c2c21;
 }
 
+/* ÁREA DOS LIVROS */
+
 .estante-livros {
+
     min-height: 300px;
 
     display: flex;
 
     align-items: flex-end;
+
     justify-content: flex-start;
 
     gap: 14px;
@@ -135,11 +140,13 @@ header a {
     padding: 0 15px 0;
 
     border-bottom: 18px solid #3c2c21;
+
 }
 
-/* VAZIA */
+/* MENSAGEM ESTANTE VAZIA */
 
 .vazia {
+
     width: 100%;
 
     min-height: 280px;
@@ -147,6 +154,7 @@ header a {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
@@ -156,18 +164,23 @@ header a {
     font-family: Arial, sans-serif;
 
     font-size: 16px;
+
 }
 
 /* LIVRO */
 
 .livro {
+
     width: 100px;
+
     min-height: 230px;
 
     padding: 15px 10px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
@@ -183,34 +196,49 @@ header a {
     transition: .3s;
 
     position: relative;
+
 }
 
 .livro:hover {
+
     transform: translateY(-15px) rotate(-2deg);
+
     box-shadow: 7px 7px 12px rgba(0,0,0,.25);
+
 }
 
 .livro-conteudo {
+
     writing-mode: vertical-rl;
+
     transform: rotate(180deg);
+
 }
 
 .livro-titulo {
+
     font-size: 17px;
+
     margin-bottom: 12px;
+
 }
 
 .livro-autor {
+
     font-family: Arial, sans-serif;
+
     font-size: 11px;
+
 }
 
 /* MODAL */
 
 .modal {
+
     display: none;
 
     position: fixed;
+
     inset: 0;
 
     background: rgba(0,0,0,.55);
@@ -218,9 +246,11 @@ header a {
     z-index: 10;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 20px;
+
 }
 
 .modal.ativo {
@@ -228,7 +258,9 @@ header a {
 }
 
 .caixa-modal {
+
     width: 450px;
+
     max-width: 100%;
 
     background: #f7f5ed;
@@ -236,21 +268,27 @@ header a {
     padding: 35px;
 
     box-shadow: 10px 10px 0 rgba(0,0,0,.2);
+
 }
 
 .caixa-modal h2 {
+
     font-size: 30px;
 
     font-weight: normal;
 
     margin-bottom: 25px;
+
 }
 
 .campo {
+
     margin-bottom: 18px;
+
 }
 
 .campo label {
+
     display: block;
 
     font-family: Arial, sans-serif;
@@ -258,10 +296,12 @@ header a {
     font-size: 13px;
 
     margin-bottom: 7px;
+
 }
 
 .campo input,
 .campo select {
+
     width: 100%;
 
     padding: 13px;
@@ -271,17 +311,21 @@ header a {
     background: white;
 
     font-family: Arial, sans-serif;
+
 }
 
 .botoes {
+
     display: flex;
 
     gap: 10px;
 
     margin-top: 25px;
+
 }
 
 .botoes button {
+
     flex: 1;
 
     padding: 13px;
@@ -291,22 +335,31 @@ header a {
     cursor: pointer;
 
     font-weight: bold;
+
 }
 
 .salvar {
+
     background: #536b4d;
+
     color: white;
+
 }
 
 .cancelar {
+
     background: #ddd8ca;
+
     color: #333;
+
 }
 
-/* DETALHES */
+/* DETALHES DO LIVRO */
 
 .detalhes {
+
     width: 92%;
+
     max-width: 900px;
 
     margin: 0 auto 70px;
@@ -316,37 +369,47 @@ header a {
     padding: 35px;
 
     display: none;
+
 }
 
 .detalhes.ativo {
+
     display: block;
+
 }
 
 .detalhes h2 {
+
     font-size: 30px;
 
     font-weight: normal;
 
     margin-bottom: 10px;
+
 }
 
 .detalhes p {
+
     font-family: Arial, sans-serif;
 
     color: #666;
 
     line-height: 1.7;
+
 }
 
 .acoes-livro {
+
     margin-top: 20px;
 
     display: flex;
 
     gap: 10px;
+
 }
 
 .acoes-livro button {
+
     border: none;
 
     padding: 10px 18px;
@@ -354,31 +417,21 @@ header a {
     cursor: pointer;
 
     font-weight: bold;
+
 }
 
 .excluir {
+
     background: #8b4c42;
+
     color: white;
-}
 
-/* CARREGANDO */
-
-.carregando {
-    width: 100%;
-    min-height: 280px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #e9dfce;
-
-    font-family: Arial, sans-serif;
 }
 
 /* RODAPÉ */
 
 footer {
+
     text-align: center;
 
     padding: 30px;
@@ -388,47 +441,82 @@ footer {
     font-family: Arial, sans-serif;
 
     font-size: 13px;
+
 }
 
-@media (max-width: 600px) {
 
-    .introducao h1 {
-        font-size: 42px;
-    }
+/* LIVRO ABERTO */
+.livro-aberto {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto 70px;
+    background: #f7f5ed;
+    box-shadow: 12px 12px 0 rgba(0,0,0,.14);
+    display: none;
+    overflow: hidden;
+}
+.livro-aberto.ativo { display: block; }
+.livro-topo {
+    background: #536b4d;
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+.fechar-livro {
+    border: 0; background: transparent; color: white;
+    font-size: 22px; cursor: pointer;
+}
+.livro-paginas {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 520px;
+}
+.livro-capa {
+    background: #795b40;
+    padding: 35px;
+    display: flex; align-items: center; justify-content: center;
+}
+.capa-real {
+    width: 190px; min-height: 285px;
+    background: #536b4d; color: white;
+    padding: 25px 18px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    text-align: center;
+    box-shadow: 8px 8px 0 rgba(0,0,0,.25);
+    border-radius: 2px;
+}
+.capa-real img { width: 100%; height: 210px; object-fit: cover; margin-bottom: 15px; }
+.capa-real h2 { font-size: 23px; font-weight: normal; }
+.capa-real p { font-family: Arial, sans-serif; font-size: 12px; margin-top: 10px; color: rgba(255,255,255,.9); }
+.livro-conteudo-aberto { padding: 35px 40px; }
+.livro-conteudo-aberto h1 { font-size: 38px; font-weight: normal; margin-bottom: 6px; }
+.livro-meta { font-family: Arial, sans-serif; color: #687064; margin-bottom: 28px; }
+.secao-leitura { margin: 25px 0; }
+.secao-leitura h3 { font-size: 18px; font-weight: normal; color: #536b4d; margin-bottom: 8px; border-bottom: 1px solid #d8d2bd; padding-bottom: 6px; }
+.secao-leitura p { font-family: Arial, sans-serif; color: #444; line-height: 1.65; white-space: pre-wrap; }
+.estrelas { color: #536b4d; letter-spacing: 2px; }
+.botoes-detalhes { display:flex; gap:10px; flex-wrap:wrap; margin-top:25px; }
+.btn-editar { background:#536b4d; color:white; }
+.btn-fechar { background:#ddd8ca; color:#333; }
+.botoes-detalhes button { border:0; padding:11px 18px; cursor:pointer; font-weight:bold; }
+.upload-ajuda { font-family:Arial,sans-serif; font-size:11px; color:#777; margin-top:5px; }
 
-    .biblioteca {
-        width: 95%;
-        padding: 25px 15px 0;
-    }
-
-    header {
-        padding: 0 4%;
-    }
-
-    header strong {
-        font-size: 14px;
-    }
-
+@media (max-width: 750px) {
+    .livro-paginas { grid-template-columns: 1fr; }
+    .livro-capa { min-height: 330px; }
+    .livro-conteudo-aberto { padding: 25px; }
 }
 
 </style>
 
-<!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-const SUPABASE_URL = "https://mfrfbuisatybyotdtdup.supabase.com";
-const SUPABASE_KEY = "sb_publishable_q2EPBiZQtxUiA9of61SONA_9OtU-Hrs";
-
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-</script>
-
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -464,21 +552,21 @@ autores e obras que você deseja guardar.
 <div class="area-adicionar">
 
 <button class="btn-adicionar" onclick="abrirModal()">
+
 + Adicionar livro
+
 </button>
 
 </div>
 
 
+<!-- ESTANTE -->
+
 <main class="biblioteca">
 
 <div id="estanteLivros" class="estante-livros">
 
-<div class="carregando" id="carregando">
-Carregando sua biblioteca...
-</div>
-
-<div class="vazia" id="mensagemVazia" style="display:none;">
+<div class="vazia" id="mensagemVazia">
 
 <p>
 Sua estante ainda está vazia.<br>
@@ -492,148 +580,73 @@ Clique em <strong>“Adicionar livro”</strong> para começar.
 </main>
 
 
-<!-- DETALHES -->
+<!-- LIVRO ABERTO -->
+<section id="livroAberto" class="livro-aberto">
+    <div class="livro-topo">
+        <strong>Livro aberto</strong>
+        <button class="fechar-livro" onclick="fecharLivro()">×</button>
+    </div>
 
-<section id="detalhes" class="detalhes">
+    <div class="livro-paginas">
+        <aside class="livro-capa">
+            <div id="capaReal" class="capa-real"></div>
+        </aside>
 
-<h2 id="detalheTitulo"></h2>
+        <article class="livro-conteudo-aberto">
+            <h1 id="detalheTitulo"></h1>
+            <div class="livro-meta">
+                <span id="detalheAutor"></span> · 
+                <span id="detalheCategoria"></span> · 
+                <span id="detalheStatus"></span>
+            </div>
 
-<p id="detalheAutor"></p>
+            <div class="secao-leitura"><h3>Sinopse</h3><p id="detalheSinopse"></p></div>
+            <div class="secao-leitura"><h3>Minha opinião</h3><p id="detalheOpiniao"></p></div>
+            <div class="secao-leitura"><h3>O que essa obra me fez pensar?</h3><p id="detalhePensar"></p></div>
+            <div class="secao-leitura"><h3>Críticas e reflexões</h3><p id="detalheCriticas"></p></div>
+            <div class="secao-leitura"><h3>Repertório para redação</h3><p id="detalheRepertorio"></p></div>
+            <div class="secao-leitura"><h3>Temas relacionados</h3><p id="detalheTemas"></p></div>
+            <div class="secao-leitura"><h3>Citações e notas</h3><p id="detalheCitacoes"></p></div>
+            <div class="secao-leitura"><h3>Avaliação</h3><p id="detalheAvaliacao" class="estrelas"></p></div>
 
-<p id="detalheCategoria"></p>
-
-<div class="acoes-livro">
-
-<button class="excluir" onclick="excluirLivro()">
-Excluir livro
-</button>
-
-</div>
-
+            <div class="botoes-detalhes">
+                <button class="btn-editar" onclick="editarLivro()">Editar livro</button>
+                <button class="excluir" onclick="excluirLivro()">Excluir livro</button>
+                <button class="btn-fechar" onclick="fecharLivro()">Fechar livro</button>
+            </div>
+        </article>
+    </div>
 </section>
 
-
 <!-- MODAL -->
-
 <div id="modal" class="modal">
-
 <div class="caixa-modal">
-
-<h2>
-Adicionar livro
-</h2>
-
+<h2 id="tituloModal">Adicionar livro</h2>
 <form id="formLivro">
 
-<div class="campo">
-
-<label for="titulo">
-Título do livro
-</label>
-
-<input
-type="text"
-id="titulo"
-placeholder="Ex.: O livro..."
-required
->
-
-</div>
-
-
-<div class="campo">
-
-<label for="autor">
-Autor
-</label>
-
-<input
-type="text"
-id="autor"
-placeholder="Nome do autor"
-required
->
-
-</div>
-
-
-<div class="campo">
-
-<label for="categoria">
-Categoria
-</label>
-
-<select id="categoria">
-
-<option value="Literatura">
-Literatura
-</option>
-
-<option value="Romantismo">
-Romantismo
-</option>
-
-<option value="Realismo">
-Realismo
-</option>
-
-<option value="Modernismo">
-Modernismo
-</option>
-
-<option value="Poesia">
-Poesia
-</option>
-
-<option value="Outro">
-Outro
-</option>
-
-</select>
-
-</div>
-
-
-<div class="campo">
-
-<label for="cor">
-Cor da capa
-</label>
-
-<input
-type="color"
-id="cor"
-value="#536b4d"
->
-
-</div>
-
+<div class="campo"><label for="titulo">Título do livro</label><input type="text" id="titulo" required></div>
+<div class="campo"><label for="autor">Autor</label><input type="text" id="autor" required></div>
+<div class="campo"><label for="categoria">Categoria</label><select id="categoria">
+<option>Literatura</option><option>Romantismo</option><option>Realismo</option><option>Modernismo</option><option>Poesia</option><option>Outro</option>
+</select></div>
+<div class="campo"><label for="capa">Capa do livro</label><input type="url" id="capa" placeholder="Cole o link da imagem da capa"><div class="upload-ajuda">Use um link direto para a imagem (JPG, PNG ou WebP).</div></div>
+<div class="campo"><label for="sinopse">Sinopse</label><textarea id="sinopse" rows="3" style="width:100%;padding:13px;border:1px solid #bbb;font-family:Arial,sans-serif;resize:vertical"></textarea></div>
+<div class="campo"><label for="opiniao">Minha opinião</label><textarea id="opiniao" rows="3" style="width:100%;padding:13px;border:1px solid #bbb;font-family:Arial,sans-serif;resize:vertical"></textarea></div>
+<div class="campo"><label for="pensar">O que essa obra me fez pensar?</label><textarea id="pensar" rows="3" style="width:100%;padding:13px;border:1px solid #bbb;font-family:Arial,sans-serif;resize:vertical"></textarea></div>
+<div class="campo"><label for="criticas">Críticas e reflexões</label><textarea id="criticas" rows="3" style="width:100%;padding:13px;border:1px solid #bbb;font-family:Arial,sans-serif;resize:vertical"></textarea></div>
+<div class="campo"><label for="repertorio">Repertório para redação</label><textarea id="repertorio" rows="3" style="width:100%;padding:13px;border:1px solid #bbb;font-family:Arial,sans-serif;resize:vertical"></textarea></div>
+<div class="campo"><label for="temas">Temas relacionados</label><input type="text" id="temas" placeholder="Ex.: desigualdade, identidade, sociedade"></div>
+<div class="campo"><label for="citacoes">Citações e notas</label><textarea id="citacoes" rows="3" style="width:100%;padding:13px;border:1px solid #bbb;font-family:Arial,sans-serif;resize:vertical"></textarea></div>
+<div class="campo"><label for="avaliacao">Avaliação</label><select id="avaliacao"><option value="0">Sem avaliação</option><option value="1">★☆☆☆☆</option><option value="2">★★☆☆☆</option><option value="3">★★★☆☆</option><option value="4">★★★★☆</option><option value="5">★★★★★</option></select></div>
+<div class="campo"><label for="status">Status de leitura</label><select id="status"><option>Quero ler</option><option>Lendo</option><option>Concluído</option></select></div>
 
 <div class="botoes">
-
-<button
-type="button"
-class="cancelar"
-onclick="fecharModal()"
->
-Cancelar
-</button>
-
-<button
-type="submit"
-class="salvar"
->
-Adicionar
-</button>
-
+<button type="button" class="cancelar" onclick="fecharModal()">Cancelar</button>
+<button type="submit" class="salvar" id="botaoSalvar">Adicionar</button>
 </div>
-
 </form>
-
 </div>
-
 </div>
-
 
 <footer>
 
@@ -642,397 +655,192 @@ Biblioteca Virtual Gonçalves Dias
 </footer>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase.js"></script>
+
 <script>
 
-/* =========================
-   VARIÁVEIS
-========================= */
-
 let livros = [];
-
 let livroSelecionado = null;
+let livroEmEdicao = null;
 
+function abrirModal(livro = null) {
+    livroEmEdicao = livro ? livro.id : null;
+    document.getElementById("tituloModal").textContent = livro ? "Editar livro" : "Adicionar livro";
+    document.getElementById("botaoSalvar").textContent = livro ? "Salvar alterações" : "Adicionar";
+    document.getElementById("formLivro").reset();
 
-/* =========================
-   ABRIR MODAL
-========================= */
-
-function abrirModal() {
-
-    document
-        .getElementById("modal")
-        .classList.add("ativo");
-
+    if (livro) {
+        document.getElementById("titulo").value = livro.titulo || "";
+        document.getElementById("autor").value = livro.autor || "";
+        document.getElementById("categoria").value = livro.categoria || "Literatura";
+        document.getElementById("capa").value = livro.capa && !livro.capa.startsWith("#") ? livro.capa : "";
+        document.getElementById("sinopse").value = livro.sinopse || "";
+        document.getElementById("opiniao").value = livro.minha_opiniao || "";
+        document.getElementById("pensar").value = livro.o_que_me_fez_pensar || "";
+        document.getElementById("criticas").value = livro.criticas_reflexoes || "";
+        document.getElementById("repertorio").value = livro.repertorio_redacao || "";
+        document.getElementById("temas").value = livro.temas || "";
+        document.getElementById("citacoes").value = livro.citacoes_notas || "";
+        document.getElementById("avaliacao").value = livro.avaliacao || "0";
+        document.getElementById("status").value = livro.status || "Quero ler";
+    }
+    document.getElementById("modal").classList.add("ativo");
 }
-
-
-/* =========================
-   FECHAR MODAL
-========================= */
 
 function fecharModal() {
-
-    document
-        .getElementById("modal")
-        .classList.remove("ativo");
-
-    document
-        .getElementById("formLivro")
-        .reset();
-
+    document.getElementById("modal").classList.remove("ativo");
+    document.getElementById("formLivro").reset();
+    livroEmEdicao = null;
+    document.getElementById("tituloModal").textContent = "Adicionar livro";
+    document.getElementById("botaoSalvar").textContent = "Adicionar";
 }
-
-
-/* =========================
-   CARREGAR LIVROS
-========================= */
 
 async function carregarLivros() {
-
-    const carregando =
-        document.getElementById("carregando");
-
-    const mensagem =
-        document.getElementById("mensagemVazia");
-
+    const carregando = document.getElementById("carregando");
     try {
-
-        const { data, error } =
-            await supabaseClient
-                .from("livros")
-                .select("*")
-                .order("criado_em", {
-                    ascending: true
-                });
-
-        if (error) {
-            throw error;
-        }
-
+        const { data, error } = await supabaseClient.from("livros").select("*").order("criado_em", { ascending: true });
+        if (error) throw error;
         livros = data || [];
-
         carregando.style.display = "none";
-
         mostrarLivros();
-
     } catch (erro) {
-
-        console.error("Erro ao carregar livros:", erro);
-
-        carregando.innerHTML =
-            "Não foi possível carregar a biblioteca.";
-
+        console.error(erro);
+        carregando.innerHTML = "Não foi possível carregar a biblioteca.<br><small>Verifique a URL e a Publishable Key no supabase.js.</small>";
     }
-
 }
 
-
-/* =========================
-   ADICIONAR LIVRO
-========================= */
-
-document
-.getElementById("formLivro")
-.addEventListener("submit", async function(event) {
-
+document.getElementById("formLivro").addEventListener("submit", async function(event) {
     event.preventDefault();
+    const botao = document.getElementById("botaoSalvar");
+    botao.disabled = true; botao.textContent = "Salvando...";
 
-    const titulo =
-        document.getElementById("titulo").value.trim();
-
-    const autor =
-        document.getElementById("autor").value.trim();
-
-    const categoria =
-        document.getElementById("categoria").value;
-
-    const cor =
-        document.getElementById("cor").value;
-
-
-    const botao =
-        document.querySelector(".salvar");
-
-    botao.disabled = true;
-    botao.textContent = "Salvando...";
-
+    const dados = {
+        titulo: document.getElementById("titulo").value.trim(),
+        autor: document.getElementById("autor").value.trim(),
+        categoria: document.getElementById("categoria").value,
+        capa: document.getElementById("capa").value.trim(),
+        sinopse: document.getElementById("sinopse").value.trim(),
+        minha_opiniao: document.getElementById("opiniao").value.trim(),
+        o_que_me_fez_pensar: document.getElementById("pensar").value.trim(),
+        criticas_reflexoes: document.getElementById("criticas").value.trim(),
+        repertorio_redacao: document.getElementById("repertorio").value.trim(),
+        temas: document.getElementById("temas").value.trim(),
+        citacoes_notas: document.getElementById("citacoes").value.trim(),
+        avaliacao: Number(document.getElementById("avaliacao").value) || null,
+        status: document.getElementById("status").value
+    };
 
     try {
-
-        const { data, error } =
-            await supabaseClient
-                .from("livros")
-                .insert([
-                    {
-                        titulo: titulo,
-                        autor: autor,
-                        categoria: categoria,
-
-                        /*
-                        A coluna "capa" está sendo usada
-                        temporariamente para guardar
-                        a cor da capa.
-                        */
-                        capa: cor,
-
-                        status: "Quero ler"
-                    }
-                ])
-                .select()
-                .single();
-
-
-        if (error) {
-            throw error;
+        if (livroEmEdicao !== null) {
+            const { data, error } = await supabaseClient.from("livros").update(dados).eq("id", livroEmEdicao).select().single();
+            if (error) throw error;
+            livros = livros.map(l => l.id === livroEmEdicao ? data : l);
+            livroSelecionado = livroEmEdicao;
+        } else {
+            const { data, error } = await supabaseClient.from("livros").insert([dados]).select().single();
+            if (error) throw error;
+            livros.push(data);
+            livroSelecionado = data.id;
         }
-
-
-        livros.push(data);
-
         fecharModal();
-
         mostrarLivros();
-
-
+        mostrarDetalhes(livroSelecionado);
     } catch (erro) {
-
-        console.error("Erro ao adicionar:", erro);
-
-        alert(
-            "Não foi possível adicionar o livro.\n\n" +
-            erro.message
-        );
-
+        console.error(erro);
+        alert("Não foi possível salvar o livro.\n\n" + erro.message);
     } finally {
-
         botao.disabled = false;
         botao.textContent = "Adicionar";
-
     }
-
 });
 
-
-/* =========================
-   MOSTRAR LIVROS
-========================= */
-
 function mostrarLivros() {
-
-    const estante =
-        document.getElementById("estanteLivros");
-
-    const mensagem =
-        document.getElementById("mensagemVazia");
-
-
-    estante
-        .querySelectorAll(".livro")
-        .forEach(livro => livro.remove());
-
-
-    if (livros.length === 0) {
-
-        mensagem.style.display = "flex";
-
-        return;
-
-    }
-
-
+    const estante = document.getElementById("estanteLivros");
+    const mensagem = document.getElementById("mensagemVazia");
+    estante.querySelectorAll(".livro").forEach(livro => livro.remove());
+    if (livros.length === 0) { mensagem.style.display = "flex"; return; }
     mensagem.style.display = "none";
 
-
-    livros.forEach(function(livro) {
-
-        const elemento =
-            document.createElement("div");
-
-
+    livros.forEach(livro => {
+        const elemento = document.createElement("div");
         elemento.className = "livro";
-
-
-        /*
-        A cor vem do campo "capa"
-        do Supabase.
-        */
-
-        elemento.style.background =
-            livro.capa || "#536b4d";
-
-
-        elemento.innerHTML = `
-
-            <div class="livro-conteudo">
-
-                <div class="livro-titulo">
-                    ${escaparHTML(livro.titulo)}
-                </div>
-
-                <div class="livro-autor">
-                    ${escaparHTML(livro.autor || "")}
-                </div>
-
-            </div>
-
-        `;
-
-
-        elemento.onclick = function() {
-
-            mostrarDetalhes(livro.id);
-
-        };
-
-
+        const capaEhImagem = livro.capa && !livro.capa.startsWith("#");
+        if (capaEhImagem) {
+            elemento.style.backgroundImage = `linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.18)), url("${escaparAtributo(livro.capa)}")`;
+            elemento.style.backgroundSize = "cover";
+            elemento.style.backgroundPosition = "center";
+        } else {
+            elemento.style.background = livro.capa || "#536b4d";
+        }
+        elemento.innerHTML = `<div class="livro-conteudo"><div class="livro-titulo">${escaparHTML(livro.titulo)}</div><div class="livro-autor">${escaparHTML(livro.autor || "")}</div></div>`;
+        elemento.onclick = () => mostrarDetalhes(livro.id);
         estante.appendChild(elemento);
-
     });
-
 }
-
-
-/* =========================
-   DETALHES
-========================= */
 
 function mostrarDetalhes(id) {
-
-    const livro =
-        livros.find(item => item.id === id);
-
-
+    const livro = livros.find(item => item.id === id);
     if (!livro) return;
-
-
     livroSelecionado = id;
 
+    document.getElementById("detalheTitulo").textContent = livro.titulo || "Sem título";
+    document.getElementById("detalheAutor").textContent = "Autor: " + (livro.autor || "Não informado");
+    document.getElementById("detalheCategoria").textContent = livro.categoria || "Não informada";
+    document.getElementById("detalheStatus").textContent = livro.status || "Quero ler";
 
-    document
-        .getElementById("detalheTitulo")
-        .textContent =
-        livro.titulo;
+    preencher("detalheSinopse", livro.sinopse, "Nenhuma sinopse adicionada.");
+    preencher("detalheOpiniao", livro.minha_opiniao, "Nenhuma opinião adicionada.");
+    preencher("detalhePensar", livro.o_que_me_fez_pensar, "Nenhuma reflexão adicionada.");
+    preencher("detalheCriticas", livro.criticas_reflexoes, "Nenhuma crítica ou reflexão adicionada.");
+    preencher("detalheRepertorio", livro.repertorio_redacao, "Nenhum repertório adicionado.");
+    preencher("detalheTemas", livro.temas, "Nenhum tema relacionado adicionado.");
+    preencher("detalheCitacoes", livro.citacoes_notas, "Nenhuma citação ou nota adicionada.");
 
+    const avaliacao = Number(livro.avaliacao) || 0;
+    document.getElementById("detalheAvaliacao").textContent = avaliacao ? "★".repeat(avaliacao) + "☆".repeat(5-avaliacao) : "Sem avaliação";
 
-    document
-        .getElementById("detalheAutor")
-        .textContent =
-        "Autor: " +
-        (livro.autor || "Não informado");
+    const capa = document.getElementById("capaReal");
+    const temImagem = livro.capa && !livro.capa.startsWith("#");
+    capa.style.background = temImagem ? "#536b4d" : (livro.capa || "#536b4d");
+    capa.innerHTML = temImagem ? `<img src="${escaparAtributo(livro.capa)}" alt="Capa de ${escaparAtributo(livro.titulo)}"><h2>${escaparHTML(livro.titulo)}</h2><p>${escaparHTML(livro.autor || "")}</p>` : `<h2>${escaparHTML(livro.titulo)}</h2><p>${escaparHTML(livro.autor || "")}</p>`;
 
-
-    document
-        .getElementById("detalheCategoria")
-        .textContent =
-        "Categoria: " +
-        (livro.categoria || "Não informada");
-
-
-    document
-        .getElementById("detalhes")
-        .classList.add("ativo");
-
-
-    window.scrollTo({
-
-        top:
-            document
-                .getElementById("detalhes")
-                .offsetTop - 30,
-
-        behavior: "smooth"
-
-    });
-
+    document.getElementById("livroAberto").classList.add("ativo");
+    document.getElementById("livroAberto").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function preencher(id, valor, vazio) { document.getElementById(id).textContent = valor || vazio; }
 
-/* =========================
-   EXCLUIR LIVRO
-========================= */
+function fecharLivro() { document.getElementById("livroAberto").classList.remove("ativo"); }
+
+function editarLivro() {
+    const livro = livros.find(l => l.id === livroSelecionado);
+    if (livro) abrirModal(livro);
+}
 
 async function excluirLivro() {
-
     if (livroSelecionado === null) return;
-
-
-    const confirmar =
-        confirm("Deseja realmente excluir este livro?");
-
-
-    if (!confirmar) return;
-
-
+    if (!confirm("Deseja realmente excluir este livro?")) return;
     try {
-
-        const { error } =
-            await supabaseClient
-                .from("livros")
-                .delete()
-                .eq("id", livroSelecionado);
-
-
-        if (error) {
-            throw error;
-        }
-
-
-        livros =
-            livros.filter(
-                livro =>
-                livro.id !== livroSelecionado
-            );
-
-
+        const { error } = await supabaseClient.from("livros").delete().eq("id", livroSelecionado);
+        if (error) throw error;
+        livros = livros.filter(livro => livro.id !== livroSelecionado);
         livroSelecionado = null;
-
-
-        document
-            .getElementById("detalhes")
-            .classList.remove("ativo");
-
-
+        fecharLivro();
         mostrarLivros();
-
-
     } catch (erro) {
-
-        console.error("Erro ao excluir:", erro);
-
-        alert(
-            "Não foi possível excluir o livro.\n\n" +
-            erro.message
-        );
-
+        console.error(erro);
+        alert("Não foi possível excluir o livro.\n\n" + erro.message);
     }
-
 }
 
-
-/* =========================
-   SEGURANÇA
-========================= */
-
-function escaparHTML(texto) {
-
-    const div =
-        document.createElement("div");
-
-    div.textContent =
-        texto || "";
-
-    return div.innerHTML;
-
-}
-
-
-/* =========================
-   INICIAR
-========================= */
+function escaparHTML(texto) { const div = document.createElement("div"); div.textContent = texto || ""; return div.innerHTML; }
+function escaparAtributo(texto) { return String(texto || "").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
 carregarLivros();
-
 </script>
 
+
 </body>
+
 </html>

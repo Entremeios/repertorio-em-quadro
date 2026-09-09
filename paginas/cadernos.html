@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cadernos | Biblioteca Virtual Gonçalves Dias</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --verde: #304b38;
+    --verde-escuro: #203728;
+    --creme: #f5f1e8;
+    --folha: #fffdf7;
+    --cinza: #6c756e;
+    --borda: #d5d0c4;
+}
+
+body {
+    background: var(--creme);
+    color: #26352b;
+    font-family: 'Inter', sans-serif;
+}
+
+/* =====================================
+   CABEÇALHO
+===================================== */
+
+header {
+    height: 76px;
+    background: var(--verde);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    line-height: 1.1;
+}
+
+.logo-text small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 3px;
+}
+
+.voltar {
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.5);
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* =====================================
+   TELA DE CADERNOS
+===================================== */
+
+#telaCadernos {
+    min-height: calc(100vh - 76px);
+}
+
+.topo {
+    max-width: 1100px;
+    margin: auto;
+    padding: 55px 20px 25px;
+}
+
+.etiqueta {
+    display: inline-block;
+
+    background: #dce4da;
+    color: var(--verde);
+
+    padding: 7px 13px;
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    margin-bottom: 15px;
+}
+
+.topo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 68px);
+}
+
+.topo p {
+    max-width: 650px;
+    margin-top: 12px;
+
+    color: var(--cinza);
+    line-height: 1.6;
+}
+
+.controles {
+    max-width: 1100px;
+    margin: 0 auto 35px;
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.contador {
+    color: var(--cinza);
+    font-size: 13px;
+}
+
+.btn {
+    border: none;
+    background: var(--verde);
+    color: white;
+
+    padding: 12px 22px;
+    border-radius: 25px;
+
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--verde-escuro);
+}
+
+/* =====================================
+   LISTA DE CADERNOS
+===================================== */
+
+.cadernos {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: auto;
+    padding-bottom: 80px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 28px;
+}
+
+/* =====================================
+   CAPA DO CADERNO
+===================================== */
+
+.caderno {
+    cursor: pointer;
+    transition: .25s;
+}
+
+.caderno:hover {
+    transform: translateY(-8px);
+}
+
+.capa-caderno {
+    height: 320px;
+
+    background: var(--verde);
+
+    border-radius: 5px 12px 12px 5px;
+
+    position: relative;
+
+    box-shadow:
+        7px 10px 18px rgba(0,0,0,.16);
+
+    overflow: hidden;
+}
+
+.capa-caderno::before {
+    content: "";
+
+    position: absolute;
+
+    left: 28px;
+    top: 0;
+    bottom: 0;
+
+    width: 2px;
+
+    background: rgba(255,255,255,.18);
+}
+
+.capa-caderno::after {
+    content: "";
+
+    position: absolute;
+
+    right: 12px;
+    top: 0;
+    bottom: 0;
+
+    width: 3px;
+
+    background: rgba(0,0,0,.13);
+}
+
+.capa-conteudo {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px;
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+.capa-icone {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.capa-conteudo h2 {
+    color: white;
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 27px;
+
+    line-height: 1.2;
+}
+
+.capa-conteudo span {
+    margin-top: 12px;
+
+    color: rgba(255,255,255,.7);
+
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.acoes-caderno {
+    margin-top: 12px;
+
+    display: flex;
+    gap: 7px;
+
+    justify-content: center;
+}
+
+.acoes-caderno button {
+    border: 1px solid #aeb7ae;
+
+    background: #fff;
+
+    color: var(--verde);
+
+    padding: 6px 11px;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+}
+
+.acoes-caderno button:hover {
+    background: #e9eee7;
+}
+
+/* =====================================
+   VAZIO
+===================================== */
+
+.vazio {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 90px 20px;
+
+    border: 1px dashed #aeb7ae;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.3);
+
+    color: var(--cinza);
+}
+
+.vazio-icone {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.vazio h2 {
+    font-family: 'Playfair Display', serif;
+
+    color: var(--verde);
+
+    margin-bottom: 8px;
+}
+
+/* =====================================
+   MODAL
+===================================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(15,25,18,.78);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.caixa-modal {
+    width: 100%;
+    max-width: 500px;
+
+    background: #f8f5ed;
+
+    border-radius: 15px;
+
+    padding: 30px;
+}
+
+.caixa-modal h2 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 30px;
+
+    margin-bottom: 22px;
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+.campo input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #b9c0b9;
+
+    border-radius: 7px;
+
+    background: white;
+
+    font-family: 'Inter', sans-serif;
+}
+
+.botoes-modal {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.botoes-modal button {
+    flex: 1;
+
+    padding: 12px;
+
+    border-radius: 25px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.cancelar {
+    background: transparent;
+
+    border: 1px solid var(--verde);
+
+    color: var(--verde);
+}
+
+.confirmar {
+    background: var(--verde);
+
+    color: white;
+
+    border: none;
+}
+
+/* =====================================
+   EDITOR DO CADERNO
+===================================== */
+
+#telaEditor {
+    display: none;
+
+    min-height: calc(100vh - 76px);
+
+    background: #dcd8cd;
+}
+
+.editor-topo {
+    height: 68px;
+
+    background: white;
+
+    border-bottom: 1px solid #c9c5ba;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 25px;
+
+    gap: 15px;
+}
+
+.editor-esquerda {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.btn-voltar-editor {
+    border: none;
+
+    background: #e7ebe5;
+
+    color: var(--verde);
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.nome-caderno {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 23px;
+}
+
+.editor-centro {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.navegacao button {
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid #c9c5ba;
+
+    background: white;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    color: var(--verde);
+}
+
+.pagina-numero {
+    min-width: 95px;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color: var(--cinza);
+}
+
+.btn-add-pagina {
+    border: none;
+
+    background: var(--verde);
+
+    color: white;
+
+    padding: 10px 17px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+/* =====================================
+   ÁREA DO PAPEL
+===================================== */
+
+.area-editor {
+    min-height: calc(100vh - 144px);
+
+    padding: 40px 20px 70px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+}
+
+.pagina {
+    width: 800px;
+
+    min-height: 1050px;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 31px,
+            #dce4da 32px
+        );
+
+    background-color: #fffdf7;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.15);
+
+    position: relative;
+
+    padding: 65px 65px 80px 85px;
+
+    overflow: hidden;
+}
+
+/* MARGEM VERMELHA DA FOLHA */
+
+.pagina::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 65px;
+
+    width: 1px;
+
+    background: #d8bdb7;
+
+    pointer-events: none;
+}
+
+/* =====================================
+   EDITOR DE TEXTO
+===================================== */
+
+.editor-texto {
+    width: 100%;
+
+    min-height: 900px;
+
+    outline: none;
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: 16px;
+
+    line-height: 32px;
+
+    color: #26352b;
+
+    white-space: pre-wrap;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.editor-texto:empty::before {
+    content: "Comece a escrever...";
+
+    color: #a5aaa5;
+
+    pointer-events: none;
+}
+
+/* =====================================
+   IMAGENS INSERIDAS
+===================================== */
+
+.imagem-nota {
+    max-width: 100%;
+
+    max-height: 450px;
+
+    display: block;
+
+    margin: 20px auto;
+
+    border-radius: 4px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+}
+
+/* =====================================
+   BARRA DE FERRAMENTAS
+===================================== */
+
+.ferramentas {
+    position: fixed;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: white;
+
+    border: 1px solid #ccc8bd;
+
+    box-shadow: 0 5px 18px rgba(0,0,0,.15);
+
+    border-radius: 30px;
+
+    padding: 8px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    z-index: 500;
+}
+
+.ferramentas button {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--verde);
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+.ferramentas button:hover {
+    background: #e8ede6;
+}
+
+.ferramentas input {
+    display: none;
+}
+
+.salvo {
+    position: fixed;
+
+    bottom: 8px;
+
+    right: 20px;
+
+    font-size: 10px;
+
+    color: #6d756e;
+
+    z-index: 400;
+}
+
+/* =====================================
+   PAINEL DE PÁGINAS
+===================================== */
+
+.lista-paginas {
+    position: fixed;
+
+    top: 145px;
+    right: 20px;
+
+    width: 145px;
+
+    max-height: 55vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border: 1px solid #ccc8bd;
+
+    border-radius: 10px;
+
+    padding: 10px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.12);
+
+    z-index: 300;
+}
+
+.lista-paginas h3 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 17px;
+
+    margin-bottom: 8px;
+
+    color: var(--verde);
+}
+
+.mini-pagina {
+    width: 100%;
+
+    border: 1px solid #d0ccc2;
+
+    background: #fffdf7;
+
+    padding: 8px;
+
+    margin-bottom: 6px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+}
+
+.mini-pagina.ativa {
+    border-color: var(--verde);
+
+    background: #e6ece3;
+
+    font-weight: 700;
+}
+
+/* =====================================
+   RESPONSIVO
+===================================== */
+
+@media(max-width:1000px) {
+
+    .lista-paginas {
+        display: none;
+    }
+
+}
+
+@media(max-width:700px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .topo {
+        padding-top: 35px;
+    }
+
+    .controles {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .controles .btn {
+        width: 100%;
+    }
+
+    .editor-topo {
+        height: auto;
+
+        min-height: 70px;
+
+        padding: 10px;
+
+        flex-wrap: wrap;
+    }
+
+    .editor-centro {
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .area-editor {
+        padding: 15px 0 70px;
+    }
+
+    .pagina {
+        width: 100%;
+
+        min-height: 850px;
+
+        padding:
+            50px
+            30px
+            70px
+            55px;
+    }
+
+    .pagina::before {
+        left: 40px;
+    }
+
+    .editor-texto {
+        min-height: 750px;
+
+        font-size: 15px;
+    }
+
+    .ferramentas {
+        bottom: 10px;
+
+        max-width: 95%;
+
+        overflow-x: auto;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- =====================================
+     CABEÇALHO
+===================================== -->
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">📖</div>
+
+        <div class="logo-text">
+            Biblioteca Virtual
+            <small>GONÇALVES DIAS</small>
+        </div>
+
+    </div>
+
+    <a
+        href="../estante.html"
+        class="voltar"
+    >
+        ← Estante
+    </a>
+
+</header>
+
+
+<!-- =====================================
+     TELA PRINCIPAL
+===================================== -->
+
+<section id="telaCadernos">
+
+    <div class="topo">
+
+        <span class="etiqueta">
+            Anotações
+        </span>
+
+        <h1>
+            Cadernos
+        </h1>
+
+        <p>
+            Crie seus próprios cadernos digitais,
+            organize suas ideias e escreva página por página.
+        </p>
+
+    </div>
+
+
+    <div class="controles">
+
+        <span
+            id="contador"
+            class="contador"
+        >
+            0 de 8 cadernos
+        </span>
+
+
+        <button
+            class="btn"
+            onclick="abrirModalNovoCaderno()"
+        >
+            + Novo caderno
+        </button>
+
+    </div>
+
+
+    <section
+        id="listaCadernos"
+        class="cadernos"
+    ></section>
+
+</section>
+
+
+<!-- =====================================
+     MODAL NOVO CADERNO
+===================================== -->
+
+<div
+    id="modalCaderno"
+    class="modal"
+>
+
+    <div class="caixa-modal">
+
+        <h2 id="tituloModalCaderno">
+            Novo caderno
+        </h2>
+
+
+        <div class="campo">
+
+            <label>
+                Nome do caderno
+            </label>
+
+            <input
+                id="nomeCaderno"
+                type="text"
+                placeholder="Ex.: Estudos, Ideias, ENEM..."
+                maxlength="50"
+            >
+
+        </div>
+
+
+        <div class="botoes-modal">
+
+            <button
+                class="cancelar"
+                onclick="fecharModalCaderno()"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                class="confirmar"
+                onclick="salvarCaderno()"
+            >
+                Salvar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     TELA DO EDITOR
+===================================== -->
+
+<section id="telaEditor">
+
+    <div class="editor-topo">
+
+        <div class="editor-esquerda">
+
+            <button
+                class="btn-voltar-editor"
+                onclick="voltarCadernos()"
+            >
+                ← Cadernos
+            </button>
+
+
+            <div
+                id="nomeCadernoEditor"
+                class="nome-caderno"
+            >
+                Caderno
+            </div>
+
+        </div>
+
+
+        <div class="editor-centro">
+
+            <div class="navegacao">
+
+                <button
+                    onclick="paginaAnterior()"
+                    title="Página anterior"
+                >
+                    ←
+                </button>
+
+            </div>
+
+
+            <div
+                id="paginaNumero"
+                class="pagina-numero"
+            >
+                Página 1 de 1
+            </div>
+
+
+            <div class="navegacao">
+
+                <button
+                    onclick="proximaPagina()"
+                    title="Próxima página"
+                >
+                    →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn-add-pagina"
+            onclick="adicionarPagina()"
+        >
+            + Página
+        </button>
+
+    </div>
+
+
+    <!-- PÁGINA -->
+
+    <div class="area-editor">
+
+        <div class="pagina">
+
+            <div
+                id="editorTexto"
+                class="editor-texto"
+                contenteditable="true"
+                spellcheck="true"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FERRAMENTAS -->
+
+    <div class="ferramentas">
+
+        <button
+            onclick="formatar('bold')"
+            title="Negrito"
+        >
+            B
+        </button>
+
+
+        <button
+            onclick="formatar('italic')"
+            title="Itálico"
+        >
+            I
+        </button>
+
+
+        <button
+            onclick="formatar('underline')"
+            title="Sublinhado"
+        >
+            U
+        </button>
+
+
+        <button
+            onclick="formatar('insertUnorderedList')"
+            title="Lista"
+        >
+            ☷
+        </button>
+
+
+        <button
+            onclick="formatar('justifyLeft')"
+            title="Alinhar à esquerda"
+        >
+            ≡
+        </button>
+
+
+        <button
+            onclick="formatar('justifyCenter')"
+            title="Centralizar"
+        >
+            ☰
+        </button>
+
+
+        <button
+            onclick="formatar('justifyRight')"
+            title="Alinhar à direita"
+        >
+            ≡
+        </button>
+
+
+        <button
+            onclick="document.getElementById('inputImagem').click()"
+            title="Adicionar imagem"
+        >
+            🖼️
+        </button>
+
+
+        <input
+            id="inputImagem"
+            type="file"
+            accept="image/*"
+            onchange="adicionarImagem(event)"
+        >
+
+    </div>
+
+
+    <div
+        id="salvo"
+        class="salvo"
+    >
+        Salvo automaticamente
+    </div>
+
+
+    <!-- MINI LISTA DE PÁGINAS -->
+
+    <aside class="lista-paginas">
+
+        <h3>
+            Páginas
+        </h3>
+
+        <div id="miniPaginas"></div>
+
+    </aside>
+
+</section>
+
+
+<script>
+
+/* =====================================
+   DADOS
+===================================== */
+
+let cadernos =
+    JSON.parse(
+        localStorage.getItem(
+            "cadernosGoncalvesDias"
+        )
+    ) || [];
+
+let cadernoAtual = null;
+
+let paginaAtual = 0;
+
+let editandoCaderno = null;
+
+
+/* =====================================
+   SALVAR DADOS
+===================================== */
+
+function salvarDados() {
+
+    localStorage.setItem(
+        "cadernosGoncalvesDias",
+        JSON.stringify(cadernos)
+    );
+
+}
+
+
+/* =====================================
+   RENDERIZAR CADERNOS
+===================================== */
+
+function renderizarCadernos() {
+
+    const lista =
+        document.getElementById(
+            "listaCadernos"
+        );
+
+    const contador =
+        document.getElementById(
+            "contador"
+        );
+
+
+    lista.innerHTML = "";
+
+
+    contador.textContent =
+        `${cadernos.length} de 8 cadernos`;
+
+
+    if (cadernos.length === 0) {
+
+        lista.innerHTML = `
+
+            <div class="vazio">
+
+                <div class="vazio-icone">
+                    📓
+                </div>
+
+                <h2>
+                    Seus cadernos estão vazios
+                </h2>
+
+                <p>
+                    Crie seu primeiro caderno
+                    para começar a escrever.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    cadernos.forEach((caderno, indice) => {
+
+        lista.innerHTML += `
+
+            <article
+                class="caderno"
+                onclick="abrirCaderno(${caderno.id})"
+            >
+
+                <div class="capa-caderno">
+
+                    <div class="capa-conteudo">
+
+                        <div class="capa-icone">
+                            📓
+                        </div>
+
+                        <h2>
+                            ${escaparHTML(caderno.nome)}
+                        </h2>
+
+                        <span>
+                            ${caderno.paginas.length}
+                            página(s)
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="acoes-caderno">
+
+                    <button
+                        onclick="event.stopPropagation(); renomearCaderno(${caderno.id})"
+                    >
+                        Renomear
+                    </button>
+
+
+                    <button
+                        onclick="event.stopPropagation(); excluirCaderno(${caderno.id})"
+                    >
+                        Excluir
+                    </button>
+
+                </div>
+
+            </article>
+
+        `;
+
+    });
+
+}
+
+
+/* =====================================
+   NOVO CADERNO
+===================================== */
+
+function abrirModalNovoCaderno() {
+
+    if (cadernos.length >= 8) {
+
+        alert(
+            "Você já atingiu o limite de 8 cadernos."
+        );
+
+        return;
+    }
+
+
+    editandoCaderno = null;
+
+
+    document.getElementById(
+        "tituloModalCaderno"
+    ).textContent = "Novo caderno";
+
+
+    document.getElementById(
+        "nomeCaderno"
+    ).value = "";
+
+
+    document.getElementById(
+        "modalCaderno"
+    ).classList.add("ativo");
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("nomeCaderno")
+            .focus();
+
+    }, 100);
+
+}
+
+
+/* =====================================
+   RENOMEAR
+===================================== */
+
+function renomearCaderno(id) {
+
+    const caderno =
+        cadernos.find(
+            item => item.id === id
+        );
+
+    editandoCaderno = id;
+
+
+    document.getElementById(
+        "tituloModalCaderno"
+    ).textContent = "Renomear caderno";
+
+
+    document.getElementById(
+        "nomeCaderno"
+    ).value = caderno.nome;
+
+
+    document.getElementById(
+        "modalCaderno"
+    ).classList.add("ativo");
+
+}
+
+
+/* =====================================
+   SALVAR CADERNO
+===================================== */
+
+function salvarCaderno() {
+
+    const nome =
+        document
+            .getElementById("nomeCaderno")
+            .value
+            .trim();
+
+
+    if (!nome) {
+
+        alert(
+            "Digite um nome para o caderno."
+        );
+
+        return;
+    }
+
+
+    /* RENOMEAR */
+
+    if (editandoCaderno !== null) {
+
+        const caderno =
+            cadernos.find(
+                item =>
+                    item.id === editandoCaderno
+            );
+
+        caderno.nome = nome;
+
+    }
+
+    /* NOVO */
+
+    else {
+
+        cadernos.push({
+
+            id: Date.now(),
+
+            nome: nome,
+
+            paginas: [
+
+                {
+                    id: Date.now(),
+
+                    conteudo: ""
+
+                }
+
+            ]
+
+        });
+
+    }
+
+
+    salvarDados();
+
+    fecharModalCaderno();
+
+    renderizarCadernos();
+
+}
+
+
+/* =====================================
+   FECHAR MODAL
+===================================== */
+
+function fecharModalCaderno() {
+
+    document
+        .getElementById("modalCaderno")
+        .classList.remove("ativo");
+
+    editandoCaderno = null;
+
+}
+
+
+/* =====================================
+   EXCLUIR CADERNO
+===================================== */
+
+function excluirCaderno(id) {
+
+    const caderno =
+        cadernos.find(
+            item => item.id === id
+        );
+
+
+    const confirmar =
+        confirm(
+            `Excluir o caderno "${caderno.nome}" e todas as suas páginas?`
+        );
+
+
+    if (!confirmar) {
+        return;
+    }
+
+
+    cadernos =
+        cadernos.filter(
+            item => item.id !== id
+        );
+
+
+    salvarDados();
+
+    renderizarCadernos();
+
+}
+
+
+/* =====================================
+   ABRIR CADERNO
+===================================== */
+
+function abrirCaderno(id) {
+
+    cadernoAtual =
+        cadernos.find(
+            item => item.id === id
+        );
+
+
+    if (!cadernoAtual) {
+        return;
+    }
+
+
+    paginaAtual = 0;
+
+
+    document.getElementById(
+        "telaCadernos"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "telaEditor"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "nomeCadernoEditor"
+    ).textContent =
+        cadernoAtual.nome;
+
+
+    carregarPagina();
+
+}
+
+
+/* =====================================
+   VOLTAR
+===================================== */
+
+function voltarCadernos() {
+
+    salvarPaginaAtual();
+
+
+    document.getElementById(
+        "telaEditor"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "telaCadernos"
+    ).style.display = "block";
+
+
+    cadernoAtual = null;
+
+    renderizarCadernos();
+
+}
+
+
+/* =====================================
+   CARREGAR PÁGINA
+===================================== */
+
+function carregarPagina() {
+
+    if (!cadernoAtual) {
+        return;
+    }
+
+
+    const pagina =
+        cadernoAtual.paginas[paginaAtual];
+
+
+    document.getElementById(
+        "editorTexto"
+    ).innerHTML =
+        pagina.conteudo || "";
+
+
+    atualizarNumeroPagina();
+
+    renderizarMiniPaginas();
+
+}
+
+
+/* =====================================
+   SALVAR PÁGINA ATUAL
+===================================== */
+
+function salvarPaginaAtual() {
+
+    if (!cadernoAtual) {
+        return;
+    }
+
+
+    const editor =
+        document.getElementById(
+            "editorTexto"
+        );
+
+
+    cadernoAtual.paginas[paginaAtual]
+        .conteudo =
+        editor.innerHTML;
+
+
+    salvarDados();
+
+
+    document.getElementById(
+        "salvo"
+    ).textContent =
+        "Salvo automaticamente";
+
+}
+
+
+/* =====================================
+   DIGITAÇÃO
+===================================== */
+
+document
+    .getElementById("editorTexto")
+    .addEventListener(
+        "input",
+        function() {
+
+            salvarPaginaAtual();
+
+            document.getElementById(
+                "salvo"
+            ).textContent =
+                "Salvando...";
+
+
+            setTimeout(() => {
+
+                document.getElementById(
+                    "salvo"
+                ).textContent =
+                    "Salvo automaticamente";
+
+            }, 500);
+
+        }
+    );
+
+
+/* =====================================
+   ADICIONAR PÁGINA
+===================================== */
+
+function adicionarPagina() {
+
+    if (!cadernoAtual) {
+        return;
+    }
+
+
+    if (cadernoAtual.paginas.length >= 100) {
+
+        alert(
+            "Este caderno já possui 100 páginas."
+        );
+
+        return;
+    }
+
+
+    salvarPaginaAtual();
+
+
+    cadernoAtual.paginas.push({
+
+        id: Date.now(),
+
+        conteudo: ""
+
+    });
+
+
+    paginaAtual =
+        cadernoAtual.paginas.length - 1;
+
+
+    salvarDados();
+
+    carregarPagina();
+
+}
+
+
+/* =====================================
+   PÁGINA ANTERIOR
+===================================== */
+
+function paginaAnterior() {
+
+    salvarPaginaAtual();
+
+
+    if (paginaAtual <= 0) {
+        return;
+    }
+
+
+    paginaAtual--;
+
+    carregarPagina();
+
+}
+
+
+/* =====================================
+   PRÓXIMA PÁGINA
+===================================== */
+
+function proximaPagina() {
+
+    salvarPaginaAtual();
+
+
+    if (
+        paginaAtual <
+        cadernoAtual.paginas.length - 1
+    ) {
+
+        paginaAtual++;
+
+        carregarPagina();
+
+        return;
+    }
+
+
+    /* CRIA NOVA PÁGINA */
+
+    if (cadernoAtual.paginas.length >= 100) {
+
+        alert(
+            "Este caderno já possui 100 páginas."
+        );
+
+        return;
+    }
+
+
+    cadernoAtual.paginas.push({
+
+        id: Date.now(),
+
+        conteudo: ""
+
+    });
+
+
+    paginaAtual =
+        cadernoAtual.paginas.length - 1;
+
+
+    salvarDados();
+
+    carregarPagina();
+
+}
+
+
+/* =====================================
+   NÚMERO DA PÁGINA
+===================================== */
+
+function atualizarNumeroPagina() {
+
+    document.getElementById(
+        "paginaNumero"
+    ).textContent =
+
+        `Página ${paginaAtual + 1} de ${cadernoAtual.paginas.length}`;
+
+}
+
+
+/* =====================================
+   MINI PÁGINAS
+===================================== */
+
+function renderizarMiniPaginas() {
+
+    const lista =
+        document.getElementById(
+            "miniPaginas"
+        );
+
+
+    lista.innerHTML = "";
+
+
+    cadernoAtual.paginas.forEach(
+        (pagina, indice) => {
+
+            const botao =
+                document.createElement(
+                    "button"
+                );
+
+
+            botao.className =
+                "mini-pagina";
+
+
+            if (indice === paginaAtual) {
+
+                botao.classList.add(
+                    "ativa"
+                );
+
+            }
+
+
+            botao.textContent =
+                `Página ${indice + 1}`;
+
+
+            botao.onclick = function() {
+
+                salvarPaginaAtual();
+
+                paginaAtual = indice;
+
+                carregarPagina();
+
+            };
+
+
+            lista.appendChild(botao);
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   FORMATAÇÃO
+===================================== */
+
+function formatar(comando) {
+
+    document
+        .getElementById("editorTexto")
+        .focus();
+
+
+    document.execCommand(
+        comando,
+        false,
+        null
+    );
+
+
+    salvarPaginaAtual();
+
+}
+
+
+/* =====================================
+   ADICIONAR IMAGEM
+===================================== */
+
+function adicionarImagem(event) {
+
+    const arquivo =
+        event.target.files[0];
+
+
+    if (!arquivo) {
+        return;
+    }
+
+
+    const leitor =
+        new FileReader();
+
+
+    leitor.onload = function(e) {
+
+        const editor =
+            document.getElementById(
+                "editorTexto"
+            );
+
+
+        const imagem =
+            document.createElement(
+                "img"
+            );
+
+
+        imagem.src =
+            e.target.result;
+
+
+        imagem.className =
+            "imagem-nota";
+
+
+        editor.appendChild(
+            imagem
+        );
+
+
+        salvarPaginaAtual();
+
+    };
+
+
+    leitor.readAsDataURL(
+        arquivo
+    );
+
+
+    event.target.value = "";
+
+}
+
+
+/* =====================================
+   ESCAPAR HTML
+===================================== */
+
+function escaparHTML(texto) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent = texto;
+
+    return div.innerHTML;
+
+}
+
+
+/* =====================================
+   INICIAR
+===================================== */
+
+renderizarCadernos();
+
+</script>
+
+</body>
+</html>

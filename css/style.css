@@ -1,33 +1,115 @@
-/* =========================
+/* =====================================================
+   BIBLIOTECA VIRTUAL GONÇALVES DIAS
+   ESTILO GERAL
+===================================================== */
+
+:root {
+    --verde: #304b2f;
+    --verde-escuro: #1f351f;
+    --verde-claro: #526d4d;
+    --creme: #f4f0df;
+    --branco: #fffdf7;
+    --preto: #171717;
+    --cinza: #6f6f6f;
+    --borda: #d8d2bd;
+}
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--branco);
+    color: var(--preto);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+}
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+header {
+    width: 100%;
+    background: var(--creme);
+    border-bottom: 1px solid var(--borda);
+    padding: 16px 5%;
+}
+
+.header-content {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+/* =====================================================
    LOGO
-========================= */
+===================================================== */
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 13px;
     text-decoration: none;
-    color: #1f351f;
+    color: var(--verde-escuro);
 }
 
 .logo-retrato {
     width: 58px;
     height: 58px;
-    border: 2px solid #304b2f;
+
+    border: 2px solid var(--verde);
     border-radius: 50%;
+
     overflow: hidden;
-    background: #f4f0df;
+    background: var(--creme);
+
     display: flex;
     align-items: flex-start;
     justify-content: center;
+
     flex-shrink: 0;
+
+    transition: transform 0.2s ease;
+}
+
+.logo-retrato:hover {
+    transform: scale(1.05);
 }
 
 .logo-retrato img {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
     object-position: center top;
+
     filter: grayscale(100%) contrast(115%);
 }
 
@@ -41,21 +123,435 @@
     font-family: Georgia, "Times New Roman", serif;
     font-size: 16px;
     font-weight: 500;
-    letter-spacing: 0.5px;
 }
 
 .logo-texto strong {
     margin-top: 4px;
+
     font-family: Georgia, "Times New Roman", serif;
     font-size: 18px;
+
     letter-spacing: 2px;
     font-weight: 700;
 }
 
-.logo:hover .logo-retrato {
-    transform: scale(1.04);
+/* =====================================================
+   MENU
+===================================================== */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
 }
 
-.logo-retrato {
-    transition: transform 0.2s ease;
+nav a {
+    text-decoration: none;
+    color: var(--verde-escuro);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--verde-claro);
+}
+
+/* =====================================================
+   CONTEÚDO
+===================================================== */
+
+main {
+    width: 100%;
+}
+
+.container {
+    width: min(1200px, 90%);
+    margin: auto;
+}
+
+.section {
+    padding: 60px 0;
+}
+
+.titulo {
+    color: var(--verde-escuro);
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(30px, 5vw, 48px);
+
+    margin-bottom: 12px;
+}
+
+.subtitulo {
+    color: var(--cinza);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 22px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: var(--verde);
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--verde-escuro);
+    transform: translateY(-1px);
+}
+
+.btn-secundario {
+    background: transparent;
+    color: var(--verde);
+    border: 1px solid var(--verde);
+}
+
+.btn-secundario:hover {
+    background: var(--verde);
+    color: white;
+}
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.card {
+    background: white;
+
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+
+    padding: 22px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card h2,
+.card h3 {
+    color: var(--verde-escuro);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.card p {
+    line-height: 1.6;
+}
+
+/* =====================================================
+   GRIDS
+===================================================== */
+
+.grid {
+    display: grid;
+    gap: 22px;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* =====================================================
+   FORMULÁRIOS
+===================================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--verde-escuro);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+
+    background: white;
+    color: var(--preto);
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--verde);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 9999;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    width: min(650px, 100%);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: var(--branco);
+
+    border-radius: 12px;
+    padding: 28px;
+
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+
+    border: none;
+    background: transparent;
+
+    font-size: 25px;
+    color: var(--cinza);
+}
+
+/* =====================================================
+   ESTANTE
+===================================================== */
+
+.estante {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.estante-item {
+    min-height: 180px;
+
+    background: var(--creme);
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    text-decoration: none;
+
+    transition: 0.25s ease;
+}
+
+.estante-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.estante-item h2 {
+    color: var(--verde-escuro);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* =====================================================
+   LIVROS
+===================================================== */
+
+.livros {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+
+    min-height: 260px;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent calc(100% - 18px),
+            #553d25 calc(100% - 18px),
+            #553d25 100%
+        );
+
+    border-radius: 8px;
+}
+
+.livro {
+    width: 55px;
+    height: 210px;
+
+    border-radius: 3px 5px 5px 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    writing-mode: vertical-rl;
+
+    padding: 8px;
+
+    color: white;
+    font-weight: bold;
+
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.2);
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.livro:hover {
+    transform: translateY(-8px) rotate(-1deg);
+}
+
+/* =====================================================
+   ESTADO VAZIO
+===================================================== */
+
+.empty {
+    padding: 50px 20px;
+
+    text-align: center;
+
+    border: 2px dashed var(--borda);
+    border-radius: 10px;
+
+    color: var(--cinza);
+}
+
+.empty h3 {
+    margin-bottom: 8px;
+    color: var(--verde-escuro);
+}
+
+/* =====================================================
+   RODAPÉ
+===================================================== */
+
+footer {
+    margin-top: 60px;
+
+    padding: 30px 5%;
+
+    background: var(--verde-escuro);
+    color: white;
+
+    text-align: center;
+}
+
+footer p {
+    opacity: 0.85;
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .estante {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-content {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .logo-texto span {
+        font-size: 14px;
+    }
+
+    .logo-texto strong {
+        font-size: 15px;
+    }
+
+    .logo-retrato {
+        width: 50px;
+        height: 50px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .estante {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
 }

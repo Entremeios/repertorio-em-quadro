@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Filósofos e Pensadores | Biblioteca Virtual Gonçalves Dias</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f5f1e8;
+    color: #1c2b21;
+    font-family: 'Inter', sans-serif;
+}
+
+/* CABEÇALHO */
+
+header {
+    height: 76px;
+    background: #304b38;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    line-height: 1.1;
+}
+
+.logo-text small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 3px;
+}
+
+.voltar {
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.5);
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* TOPO */
+
+.topo {
+    max-width: 1100px;
+    margin: auto;
+    padding: 55px 20px 30px;
+}
+
+.topo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 6vw, 64px);
+}
+
+.topo p {
+    color: #687169;
+    margin-top: 10px;
+    max-width: 650px;
+}
+
+/* BOTÃO */
+
+.area-botao {
+    max-width: 1100px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-adicionar {
+    background: #304b38;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-adicionar:hover {
+    background: #203728;
+}
+
+/* PERFIS */
+
+.perfis {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 80px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+/* CARD */
+
+.perfil {
+    background: #fffdf7;
+    border: 1px solid #dfe2d9;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0,0,0,.07);
+    transition: .25s;
+}
+
+.perfil:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+}
+
+.capa {
+    height: 95px;
+    background: #304b38;
+}
+
+.foto {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    border: 5px solid #fffdf7;
+    margin: -52px auto 0;
+    display: block;
+    object-fit: cover;
+    background: #dfe3d7;
+}
+
+.info {
+    padding: 15px 20px 22px;
+    text-align: center;
+}
+
+.info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+}
+
+.categoria {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 11px;
+    border-radius: 20px;
+    background: #e4eadf;
+    color: #304b38;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.dados {
+    margin-top: 17px;
+    text-align: left;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #606a62;
+}
+
+.dados strong {
+    color: #28362d;
+}
+
+.acoes {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.acoes button {
+    flex: 1;
+    padding: 9px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.editar {
+    background: transparent;
+    border: 1px solid #304b38;
+    color: #304b38;
+}
+
+.excluir {
+    background: #304b38;
+    border: 1px solid #304b38;
+    color: white;
+}
+
+/* VAZIO */
+
+.vazio {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    border: 1px dashed #aeb6ae;
+    border-radius: 15px;
+    color: #737d75;
+    background: rgba(255,255,255,.4);
+}
+
+.vazio .icone {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.vazio h2 {
+    font-family: 'Playfair Display', serif;
+    color: #304b38;
+    margin-bottom: 8px;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,25,18,.75);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.formulario {
+    width: 100%;
+    max-width: 570px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #f8f5ed;
+    padding: 30px;
+    border-radius: 16px;
+}
+
+.formulario h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 31px;
+    margin-bottom: 25px;
+}
+
+.campo {
+    margin-bottom: 17px;
+}
+
+.campo label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #b9c0b9;
+    border-radius: 7px;
+    background: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.campo textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.botoes button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.cancelar {
+    background: transparent;
+    border: 1px solid #304b38;
+    color: #304b38;
+}
+
+.salvar {
+    background: #304b38;
+    color: white;
+    border: none;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:600px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .area-botao {
+        justify-content: center;
+    }
+
+    .btn-adicionar {
+        width: 100%;
+    }
+
+    .formulario {
+        padding: 23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">📖</div>
+
+        <div class="logo-text">
+            Biblioteca Virtual
+            <small>GONÇALVES DIAS</small>
+        </div>
+
+    </div>
+
+    <a href="../estante.html" class="voltar">
+        ← Estante
+    </a>
+
+</header>
+
+
+<section class="topo">
+
+    <h1>Filósofos e Pensadores</h1>
+
+    <p>
+        Um espaço para reunir pensadores, suas ideias,
+        obras e contribuições para a história do pensamento.
+    </p>
+
+</section>
+
+
+<div class="area-botao">
+
+    <button class="btn-adicionar" onclick="abrirModal()">
+        + Adicionar pensador
+    </button>
+
+</div>
+
+
+<section id="perfis" class="perfis"></section>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+
+    <div class="formulario">
+
+        <h2 id="tituloModal">
+            Novo pensador
+        </h2>
+
+
+        <div class="campo">
+
+            <label>Foto</label>
+
+            <input
+                id="foto"
+                type="file"
+                accept="image/*"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Nome</label>
+
+            <input
+                id="nome"
+                type="text"
+                placeholder="Nome do pensador"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Área / corrente</label>
+
+            <input
+                id="categoria"
+                type="text"
+                placeholder="Ex.: Filosofia Antiga"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Período / época</label>
+
+            <input
+                id="periodo"
+                type="text"
+                placeholder="Ex.: Antiguidade"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Origem</label>
+
+            <input
+                id="origem"
+                type="text"
+                placeholder="País ou cidade"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Principais obras</label>
+
+            <textarea
+                id="obras"
+                placeholder="Digite as principais obras"
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Principais ideias</label>
+
+            <textarea
+                id="ideias"
+                placeholder="Digite as principais ideias"
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>Observações pessoais</label>
+
+            <textarea
+                id="observacoes"
+                placeholder="Suas anotações sobre esse pensador"
+            ></textarea>
+
+        </div>
+
+
+        <div class="botoes">
+
+            <button
+                class="cancelar"
+                onclick="fecharModal()"
+            >
+                Cancelar
+            </button>
+
+            <button
+                class="salvar"
+                onclick="salvarPensador()"
+            >
+                Salvar perfil
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let pensadores =
+    JSON.parse(
+        localStorage.getItem("pensadoresGoncalvesDias")
+    ) || [];
+
+let editando = null;
+
+
+/* ABRIR MODAL */
+
+function abrirModal(id = null) {
+
+    editando = id;
+
+    document
+        .getElementById("modal")
+        .classList.add("ativo");
+
+    if (id !== null) {
+
+        const p =
+            pensadores.find(
+                item => item.id === id
+            );
+
+        document.getElementById("tituloModal")
+            .textContent = "Editar pensador";
+
+        document.getElementById("nome").value = p.nome;
+        document.getElementById("categoria").value = p.categoria;
+        document.getElementById("periodo").value = p.periodo;
+        document.getElementById("origem").value = p.origem;
+        document.getElementById("obras").value = p.obras;
+        document.getElementById("ideias").value = p.ideias;
+        document.getElementById("observacoes").value = p.observacoes;
+
+    } else {
+
+        document.getElementById("tituloModal")
+            .textContent = "Novo pensador";
+
+        limparFormulario();
+    }
+}
+
+
+/* FECHAR */
+
+function fecharModal() {
+
+    document
+        .getElementById("modal")
+        .classList.remove("ativo");
+
+    limparFormulario();
+
+    editando = null;
+}
+
+
+/* LIMPAR */
+
+function limparFormulario() {
+
+    document.getElementById("foto").value = "";
+    document.getElementById("nome").value = "";
+    document.getElementById("categoria").value = "";
+    document.getElementById("periodo").value = "";
+    document.getElementById("origem").value = "";
+    document.getElementById("obras").value = "";
+    document.getElementById("ideias").value = "";
+    document.getElementById("observacoes").value = "";
+}
+
+
+/* SALVAR */
+
+function salvarPensador() {
+
+    const nome =
+        document.getElementById("nome").value.trim();
+
+    const categoria =
+        document.getElementById("categoria").value.trim();
+
+    const periodo =
+        document.getElementById("periodo").value.trim();
+
+    const origem =
+        document.getElementById("origem").value.trim();
+
+    const obras =
+        document.getElementById("obras").value.trim();
+
+    const ideias =
+        document.getElementById("ideias").value.trim();
+
+    const observacoes =
+        document.getElementById("observacoes").value.trim();
+
+    const arquivo =
+        document.getElementById("foto").files[0];
+
+
+    if (!nome || !categoria) {
+
+        alert(
+            "Preencha pelo menos o nome e a área."
+        );
+
+        return;
+    }
+
+
+    /* EDITAR */
+
+    if (editando !== null) {
+
+        const pensador =
+            pensadores.find(
+                p => p.id === editando
+            );
+
+        pensador.nome = nome;
+        pensador.categoria = categoria;
+        pensador.periodo = periodo;
+        pensador.origem = origem;
+        pensador.obras = obras;
+        pensador.ideias = ideias;
+        pensador.observacoes = observacoes;
+
+
+        if (arquivo) {
+
+            const leitor =
+                new FileReader();
+
+            leitor.onload = function(e) {
+
+                pensador.foto =
+                    e.target.result;
+
+                finalizar();
+            };
+
+            leitor.readAsDataURL(arquivo);
+
+        } else {
+
+            finalizar();
+        }
+
+        return;
+    }
+
+
+    /* NOVO */
+
+    if (!arquivo) {
+
+        alert(
+            "Escolha uma foto para o perfil."
+        );
+
+        return;
+    }
+
+
+    const leitor =
+        new FileReader();
+
+    leitor.onload = function(e) {
+
+        const novoPensador = {
+
+            id: Date.now(),
+
+            nome: nome,
+
+            categoria: categoria,
+
+            periodo: periodo,
+
+            origem: origem,
+
+            obras: obras,
+
+            ideias: ideias,
+
+            observacoes: observacoes,
+
+            foto: e.target.result
+
+        };
+
+
+        pensadores.push(novoPensador);
+
+        finalizar();
+
+    };
+
+    leitor.readAsDataURL(arquivo);
+}
+
+
+/* FINALIZAR */
+
+function finalizar() {
+
+    localStorage.setItem(
+        "pensadoresGoncalvesDias",
+        JSON.stringify(pensadores)
+    );
+
+    fecharModal();
+
+    renderizar();
+}
+
+
+/* EXCLUIR */
+
+function excluir(id) {
+
+    const confirmar =
+        confirm(
+            "Deseja realmente excluir este perfil?"
+        );
+
+    if (!confirmar) return;
+
+    pensadores =
+        pensadores.filter(
+            p => p.id !== id
+        );
+
+    localStorage.setItem(
+        "pensadoresGoncalvesDias",
+        JSON.stringify(pensadores)
+    );
+
+    renderizar();
+}
+
+
+/* RENDERIZAR */
+
+function renderizar() {
+
+    const container =
+        document.getElementById("perfis");
+
+    container.innerHTML = "";
+
+
+    if (pensadores.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="vazio">
+
+                <div class="icone">
+                    🧠
+                </div>
+
+                <h2>
+                    Nenhum pensador cadastrado
+                </h2>
+
+                <p>
+                    Sua coleção começa aqui.
+                    Adicione o primeiro filósofo ou pensador.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    pensadores.forEach(p => {
+
+        container.innerHTML += `
+
+            <article class="perfil">
+
+                <div class="capa"></div>
+
+                <img
+                    class="foto"
+                    src="${p.foto}"
+                    alt="${p.nome}"
+                >
+
+                <div class="info">
+
+                    <h2>
+                        ${p.nome}
+                    </h2>
+
+                    <span class="categoria">
+                        ${p.categoria}
+                    </span>
+
+                    <div class="dados">
+
+                        ${
+                            p.periodo
+                            ? `<p>
+                                <strong>Período:</strong>
+                                ${p.periodo}
+                               </p>`
+                            : ""
+                        }
+
+                        ${
+                            p.origem
+                            ? `<p>
+                                <strong>Origem:</strong>
+                                ${p.origem}
+                               </p>`
+                            : ""
+                        }
+
+                        ${
+                            p.obras
+                            ? `<p>
+                                <strong>Obras:</strong>
+                                ${p.obras}
+                               </p>`
+                            : ""
+                        }
+
+                        ${
+                            p.ideias
+                            ? `<p>
+                                <strong>Ideias:</strong>
+                                ${p.ideias}
+                               </p>`
+                            : ""
+                        }
+
+                        ${
+                            p.observacoes
+                            ? `<p>
+                                <strong>Minhas notas:</strong>
+                                ${p.observacoes}
+                               </p>`
+                            : ""
+                        }
+
+                    </div>
+
+                    <div class="acoes">
+
+                        <button
+                            class="editar"
+                            onclick="abrirModal(${p.id})"
+                        >
+                            Editar
+                        </button>
+
+                        <button
+                            class="excluir"
+                            onclick="excluir(${p.id})"
+                        >
+                            Excluir
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        `;
+
+    });
+
+}
+
+
+/* INICIAR */
+
+renderizar();
+
+</script>
+
+</body>
+</html>

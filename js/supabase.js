@@ -3,9 +3,8 @@
    BIBLIOTECA VIRTUAL GONÇALVES DIAS
 ===================================================== */
 
-const SUPABASE_URL = "COLE_AQUI_A_URL_DO_SEU_PROJETO";
-
-const SUPABASE_KEY = "COLE_AQUI_SUA_PUBLISHABLE_KEY";
+const SUPABASE_URL = https://mfrfbuisatybyotdtdup.supabase.co
+const SUPABASE_KEY = "sb_publishable_q2EPBiZQtxUiA9of61SONA_9OtU-Hrs;
 
 
 const supabaseClient = window.supabase.createClient(

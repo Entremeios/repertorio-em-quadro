@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Literatura | Biblioteca Virtual Gonçalves Dias</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #e8e0d0;
+    color: #20271f;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* CABEÇALHO */
+
+header {
+    height: 75px;
+    background: #536b4d;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+}
+
+header strong {
+    font-size: 18px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+/* TÍTULO */
+
+.introducao {
+    text-align: center;
+    padding: 55px 20px 30px;
+}
+
+.introducao span {
+    color: #536b4d;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.introducao h1 {
+    font-size: 58px;
+    font-weight: normal;
+    margin-top: 12px;
+}
+
+.introducao p {
+    max-width: 650px;
+    margin: 18px auto;
+
+    font-family: Arial, sans-serif;
+    color: #656960;
+    line-height: 1.7;
+}
+
+/* BOTÃO ADICIONAR */
+
+.area-adicionar {
+    text-align: center;
+    margin: 10px 0 35px;
+}
+
+.btn-adicionar {
+    border: none;
+    background: #536b4d;
+    color: white;
+
+    padding: 15px 28px;
+
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+
+    cursor: pointer;
+    border-radius: 3px;
+
+    font-size: 15px;
+}
+
+.btn-adicionar:hover {
+    background: #354936;
+}
+
+/* ESTANTE */
+
+.biblioteca {
+    width: 92%;
+    max-width: 1250px;
+
+    margin: 20px auto 70px;
+
+    background: #795b40;
+
+    border-left: 15px solid #4b3727;
+    border-right: 15px solid #4b3727;
+
+    padding: 35px 35px 0;
+
+    box-shadow: 0 15px 0 #3c2c21;
+}
+
+/* ÁREA DOS LIVROS */
+
+.estante-livros {
+
+    min-height: 300px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: flex-start;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+
+    padding: 0 15px 0;
+
+    border-bottom: 18px solid #3c2c21;
+
+}
+
+/* MENSAGEM ESTANTE VAZIA */
+
+.vazia {
+
+    width: 100%;
+
+    min-height: 280px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: #e9dfce;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 16px;
+
+}
+
+/* LIVRO */
+
+.livro {
+
+    width: 100px;
+
+    min-height: 230px;
+
+    padding: 15px 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+    border: 3px solid rgba(0,0,0,.3);
+
+    box-shadow: 4px 0 0 rgba(0,0,0,.2);
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    position: relative;
+
+}
+
+.livro:hover {
+
+    transform: translateY(-15px) rotate(-2deg);
+
+    box-shadow: 7px 7px 12px rgba(0,0,0,.25);
+
+}
+
+.livro-conteudo {
+
+    writing-mode: vertical-rl;
+
+    transform: rotate(180deg);
+
+}
+
+.livro-titulo {
+
+    font-size: 17px;
+
+    margin-bottom: 12px;
+
+}
+
+.livro-autor {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+}
+
+/* MODAL */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.55);
+
+    z-index: 10;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.caixa-modal {
+
+    width: 450px;
+
+    max-width: 100%;
+
+    background: #f7f5ed;
+
+    padding: 35px;
+
+    box-shadow: 10px 10px 0 rgba(0,0,0,.2);
+
+}
+
+.caixa-modal h2 {
+
+    font-size: 30px;
+
+    font-weight: normal;
+
+    margin-bottom: 25px;
+
+}
+
+.campo {
+
+    margin-bottom: 18px;
+
+}
+
+.campo label {
+
+    display: block;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    margin-bottom: 7px;
+
+}
+
+.campo input,
+.campo select {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #bbb;
+
+    background: white;
+
+    font-family: Arial, sans-serif;
+
+}
+
+.botoes {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+.botoes button {
+
+    flex: 1;
+
+    padding: 13px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+.salvar {
+
+    background: #536b4d;
+
+    color: white;
+
+}
+
+.cancelar {
+
+    background: #ddd8ca;
+
+    color: #333;
+
+}
+
+/* DETALHES DO LIVRO */
+
+.detalhes {
+
+    width: 92%;
+
+    max-width: 900px;
+
+    margin: 0 auto 70px;
+
+    background: #f7f5ed;
+
+    padding: 35px;
+
+    display: none;
+
+}
+
+.detalhes.ativo {
+
+    display: block;
+
+}
+
+.detalhes h2 {
+
+    font-size: 30px;
+
+    font-weight: normal;
+
+    margin-bottom: 10px;
+
+}
+
+.detalhes p {
+
+    font-family: Arial, sans-serif;
+
+    color: #666;
+
+    line-height: 1.7;
+
+}
+
+.acoes-livro {
+
+    margin-top: 20px;
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+.acoes-livro button {
+
+    border: none;
+
+    padding: 10px 18px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+.excluir {
+
+    background: #8b4c42;
+
+    color: white;
+
+}
+
+/* RODAPÉ */
+
+footer {
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: #777;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<strong>
+📖 Biblioteca Virtual Gonçalves Dias
+</strong>
+
+<a href="../estante.html">
+← Voltar para a estante
+</a>
+
+</header>
+
+
+<section class="introducao">
+
+<span>
+Minha coleção
+</span>
+
+<h1>
+Literatura
+</h1>
+
+<p>
+Construa sua própria biblioteca. Adicione os livros,
+autores e obras que você deseja guardar.
+</p>
+
+</section>
+
+
+<div class="area-adicionar">
+
+<button class="btn-adicionar" onclick="abrirModal()">
+
++ Adicionar livro
+
+</button>
+
+</div>
+
+
+<!-- ESTANTE -->
+
+<main class="biblioteca">
+
+<div id="estanteLivros" class="estante-livros">
+
+<div class="vazia" id="mensagemVazia">
+
+<p>
+Sua estante ainda está vazia.<br>
+Clique em <strong>“Adicionar livro”</strong> para começar.
+</p>
+
+</div>
+
+</div>
+
+</main>
+
+
+<!-- DETALHES -->
+
+<section id="detalhes" class="detalhes">
+
+<h2 id="detalheTitulo"></h2>
+
+<p id="detalheAutor"></p>
+
+<p id="detalheCategoria"></p>
+
+<div class="acoes-livro">
+
+<button class="excluir" onclick="excluirLivro()">
+Excluir livro
+</button>
+
+</div>
+
+</section>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+
+<div class="caixa-modal">
+
+<h2>
+Adicionar livro
+</h2>
+
+<form id="formLivro">
+
+
+<div class="campo">
+
+<label for="titulo">
+Título do livro
+</label>
+
+<input
+type="text"
+id="titulo"
+placeholder="Ex.: O livro..."
+required
+>
+
+</div>
+
+
+<div class="campo">
+
+<label for="autor">
+Autor
+</label>
+
+<input
+type="text"
+id="autor"
+placeholder="Nome do autor"
+required
+>
+
+</div>
+
+
+<div class="campo">
+
+<label for="categoria">
+Categoria
+</label>
+
+<select id="categoria">
+
+<option value="Literatura">
+Literatura
+</option>
+
+<option value="Romantismo">
+Romantismo
+</option>
+
+<option value="Realismo">
+Realismo
+</option>
+
+<option value="Modernismo">
+Modernismo
+</option>
+
+<option value="Poesia">
+Poesia
+</option>
+
+<option value="Outro">
+Outro
+</option>
+
+</select>
+
+</div>
+
+
+<div class="campo">
+
+<label for="cor">
+Cor da capa
+</label>
+
+<input
+type="color"
+id="cor"
+value="#536b4d"
+>
+
+</div>
+
+
+<div class="botoes">
+
+<button
+type="button"
+class="cancelar"
+onclick="fecharModal()">
+
+Cancelar
+
+</button>
+
+<button
+type="submit"
+class="salvar">
+
+Adicionar
+
+</button>
+
+</div>
+
+
+</form>
+
+</div>
+
+</div>
+
+
+<footer>
+
+Biblioteca Virtual Gonçalves Dias
+
+</footer>
+
+
+<script>
+
+/* LISTA DE LIVROS */
+
+let livros = JSON.parse(
+    localStorage.getItem("bibliotecaLiteratura")
+) || [];
+
+let livroSelecionado = null;
+
+
+/* ABRIR MODAL */
+
+function abrirModal() {
+
+    document
+        .getElementById("modal")
+        .classList.add("ativo");
+
+}
+
+
+/* FECHAR MODAL */
+
+function fecharModal() {
+
+    document
+        .getElementById("modal")
+        .classList.remove("ativo");
+
+    document
+        .getElementById("formLivro")
+        .reset();
+
+}
+
+
+/* ADICIONAR LIVRO */
+
+document
+.getElementById("formLivro")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const titulo =
+        document.getElementById("titulo").value;
+
+    const autor =
+        document.getElementById("autor").value;
+
+    const categoria =
+        document.getElementById("categoria").value;
+
+    const cor =
+        document.getElementById("cor").value;
+
+
+    const novoLivro = {
+
+        id: Date.now(),
+
+        titulo: titulo,
+
+        autor: autor,
+
+        categoria: categoria,
+
+        cor: cor
+
+    };
+
+
+    livros.push(novoLivro);
+
+
+    salvarLivros();
+
+    fecharModal();
+
+    mostrarLivros();
+
+});
+
+
+/* SALVAR */
+
+function salvarLivros() {
+
+    localStorage.setItem(
+        "bibliotecaLiteratura",
+        JSON.stringify(livros)
+    );
+
+}
+
+
+/* MOSTRAR LIVROS */
+
+function mostrarLivros() {
+
+    const estante =
+        document.getElementById("estanteLivros");
+
+    const mensagem =
+        document.getElementById("mensagemVazia");
+
+
+    estante
+        .querySelectorAll(".livro")
+        .forEach(livro => livro.remove());
+
+
+    if (livros.length === 0) {
+
+        mensagem.style.display = "flex";
+
+        return;
+
+    }
+
+
+    mensagem.style.display = "none";
+
+
+    livros.forEach(function(livro) {
+
+
+        const elemento =
+            document.createElement("div");
+
+
+        elemento.className = "livro";
+
+
+        elemento.style.background =
+            livro.cor;
+
+
+        elemento.innerHTML = `
+
+            <div class="livro-conteudo">
+
+                <div class="livro-titulo">
+                    ${escaparHTML(livro.titulo)}
+                </div>
+
+                <div class="livro-autor">
+                    ${escaparHTML(livro.autor)}
+                </div>
+
+            </div>
+
+        `;
+
+
+        elemento.onclick = function() {
+
+            mostrarDetalhes(livro.id);
+
+        };
+
+
+        estante.appendChild(elemento);
+
+    });
+
+}
+
+
+/* DETALHES */
+
+function mostrarDetalhes(id) {
+
+    const livro =
+        livros.find(item => item.id === id);
+
+
+    if (!livro) return;
+
+
+    livroSelecionado = id;
+
+
+    document
+        .getElementById("detalheTitulo")
+        .textContent = livro.titulo;
+
+
+    document
+        .getElementById("detalheAutor")
+        .textContent =
+        "Autor: " + livro.autor;
+
+
+    document
+        .getElementById("detalheCategoria")
+        .textContent =
+        "Categoria: " + livro.categoria;
+
+
+    document
+        .getElementById("detalhes")
+        .classList.add("ativo");
+
+
+    window.scrollTo({
+
+        top:
+        document
+        .getElementById("detalhes")
+        .offsetTop - 30,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* EXCLUIR */
+
+function excluirLivro() {
+
+    if (livroSelecionado === null) return;
+
+
+    livros =
+        livros.filter(
+            livro =>
+            livro.id !== livroSelecionado
+        );
+
+
+    salvarLivros();
+
+    livroSelecionado = null;
+
+
+    document
+        .getElementById("detalhes")
+        .classList.remove("ativo");
+
+
+    mostrarLivros();
+
+}
+
+
+/* SEGURANÇA DO TEXTO */
+
+function escaparHTML(texto) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = texto;
+
+    return div.innerHTML;
+
+}
+
+
+/* INICIAR */
+
+mostrarLivros();
+
+</script>
+
+
+</body>
+
+</html>

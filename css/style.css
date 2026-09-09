@@ -1,1 +1,61 @@
+/* =========================
+   LOGO
+========================= */
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #1f351f;
+}
+
+.logo-retrato {
+    width: 58px;
+    height: 58px;
+    border: 2px solid #304b2f;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f4f0df;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-retrato img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(100%) contrast(115%);
+}
+
+.logo-texto {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-texto span {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.logo-texto strong {
+    margin-top: 4px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.logo:hover .logo-retrato {
+    transform: scale(1.04);
+}
+
+.logo-retrato {
+    transition: transform 0.2s ease;
+}
